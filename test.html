@@ -14,10 +14,11 @@ canvas { display: block; margin: 0 auto; background: #fff; }
 
 </head>
 
-<body>
+<body style="background:linear-gradient(180deg,hsla(0,0%,100%,0) 60%,#fff),linear-gradient(70deg,#dbedff 32%,#ebfff0)">
 <canvas></canvas>
 <img id="youhua_logo" style="display:none" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAMAAAAPdrEwAAAAZlBMVEVHcEz////////////////////////+/v7+/v7///////////////////////////////////////////8tJRU6MiPFw75NRjjo5+VgWk7OzMlybWLZ2NWcmJC+vLeppp+3tK+HgnkeiJrNAAAAE3RSTlMALeUOBkgc9P15PGi7isaq2FmbO5G7vgAAAtJJREFUGBm1wQeCokAABMAmTCJjDwKG3b3/f/IUMYAJZajCNEEkytiYOC6FF8IVWa4yxRu6yE0UYq5oVfBAc0wlscT3vNTnCzopQ3wlSviWbwJ8LEo4iTIBPiJzTuaXmC40ip9IPEwkM35Ix5hEKH4uD/Beyq8UHt4Ic35JRXgpSPg1JfBCkHEGXeKpMOEsWuCZnDMpD4+lnM2XeETQgSzEPanoQoo7YUY3BMYMHfEDDElFV1IM5XRGe7gV0aEEtxK6FOEqolMJrhK65eHMo2M5zlI6pgL0fLoW40TQuQwnK7on0fHpXokjyQWscBRzAT6OVlyCxEHGJQgcKC7BAJAc0+v9fq050GzWZ7uGt/R6v99ojq0ARBzZ1fag3vFis63srXqvebap7UG740gCoORQU9lO1bD3Y++0mic7e1I1HCoAxBxqba/lia7tvV+e1La35ZAPwHBA2wvNzs4+sGWnsWeV5oACYHhLb+zFhp0f+0DNzo+92HEIQMqBxl7s2NnYB1p2Nvai4VAIpByqbK/iSWMf+MeOtmc1R0LAcOjX9n7Z29p7O57sbe+PQxpAzJGt7Wx51tR2bM8Trbe2848jCkDMsb+2qto/XjVbO1D98eq3rap2zTEfQMkJmv22riprbVW3/34039IFAI+Tac3JcgABF5HiwOcSYhwkXEKEg5QL0CEOBBeQ4SjQdC9FJ6N7Ah1D51SIjtR0bYVeQtcEejEd83EWKLplcGHolApwESi6lOJGSoeUxI1A0R2DgZjO+CGGMrpSYiTSdCPHHUMn/AD3Erog8ID0OZ/BQ5HiXDmeEJrzZCGeiTmPwHMxZ8nwQqk5h8QLQnGGCK94Bb8X4aUg57f8EG/Eil9RAm/JnF8oIkwhCn5ImRATlQU/UMQBPiAyTuOnHj4lTcE3dGY8fMczieITOktFgDnCKE7zQmleaT9ZGRHAlVBK70jKEFP8ByTizQKTXgbUAAAAAElFTkSuQmCC">
 <img id="youhua_fish" style="display:none" src="https://raw.githubusercontent.com/Raycosine/raycosine.github.io/master/youhua_border-02.png">
+<img id="background" style="display:none" src="https://raw.githubusercontent.com/Raycosine/raycosine.github.io/master/sing.gif">
 <script>
 
 // http://paulirish.com/2011/requestanimationframe-for-smart-animating
@@ -37,7 +38,7 @@ window.requestAnimFrame = (function(){
 var POP = {
 
     // set up some inital values
-    WIDTH: 320, 
+    WIDTH: 480, 
     HEIGHT:  480, 
     scale:  1,
     // the position of the canvas
@@ -259,8 +260,8 @@ var POP = {
         var i;
 
 
-        POP.Draw.rect(0, 0, POP.WIDTH, POP.HEIGHT, '#036');
-
+        //POP.Draw.rect(0, 0, POP.WIDTH, POP.HEIGHT, '#036');
+		POP.Draw.background(0,0,POP.WIDTH, POP.HEIGHT,'background');
         // display snazzy wave effect
         for (i = 0; i < POP.wave.total; i++) {
 
@@ -329,6 +330,11 @@ POP.Draw = {
         POP.ctx.fillRect(x, y, w, h);
     },
 
+
+    background: function(x, y, w, h, ID) {
+        var img=docuemnt.getElementById(ID);
+        POP.ctx.drawImage(img,x, y, w, h);
+    },
     image: function(x, y, r, ID) {
 	   var img=document.getElementById(ID);
 	   POP.ctx.drawImage(img, x,y,r,r);
@@ -394,7 +400,7 @@ POP.Touch = function(x, y) {
 POP.Bubble = function() {
 
     this.type = 'bubble';
-    this.r = (Math.random() * 20) + 10;
+    this.r = (Math.random() * 20) + 30;
     this.speed = (Math.random() * 3) + 1;
  
     this.x = (Math.random() * (POP.WIDTH) - this.r);
