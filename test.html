@@ -6,7 +6,7 @@
     user-scalable=no, initial-scale=1, maximum-scale=1, user-scalable=0" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<title>I❤️SJTU I️❤️🇨🇳</title>
+<title>喵喵喵</title>
 <style type="text/css">
 body { margin: 0; padding: 0; background: #000;}
 canvas { display: block; margin: 0 auto; background: #fff; }
@@ -14,7 +14,10 @@ canvas { display: block; margin: 0 auto; background: #fff; }
 
 </head>
 
-<body style="background:linear-gradient(180deg,hsla(0,0%,100%,0) 60%,#ff0),linear-gradient(180deg,rgb(255,206,17,1) 72%,#ffff00)">
+<body style="background:linear-gradient(180deg,rgb(255,206,17,1) 50%,#ffff00)">
+<!--
+linear-gradient(180deg,hsla(0,0%,100%,0) 60%,#ff0),
+-->
 <canvas></canvas>
 <img id="youhua_logo" style="display:none" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAMAAAAPdrEwAAAAZlBMVEVHcEz////////////////////////+/v7+/v7///////////////////////////////////////////8tJRU6MiPFw75NRjjo5+VgWk7OzMlybWLZ2NWcmJC+vLeppp+3tK+HgnkeiJrNAAAAE3RSTlMALeUOBkgc9P15PGi7isaq2FmbO5G7vgAAAtJJREFUGBm1wQeCokAABMAmTCJjDwKG3b3/f/IUMYAJZajCNEEkytiYOC6FF8IVWa4yxRu6yE0UYq5oVfBAc0wlscT3vNTnCzopQ3wlSviWbwJ8LEo4iTIBPiJzTuaXmC40ip9IPEwkM35Ix5hEKH4uD/Beyq8UHt4Ic35JRXgpSPg1JfBCkHEGXeKpMOEsWuCZnDMpD4+lnM2XeETQgSzEPanoQoo7YUY3BMYMHfEDDElFV1IM5XRGe7gV0aEEtxK6FOEqolMJrhK65eHMo2M5zlI6pgL0fLoW40TQuQwnK7on0fHpXokjyQWscBRzAT6OVlyCxEHGJQgcKC7BAJAc0+v9fq050GzWZ7uGt/R6v99ojq0ARBzZ1fag3vFis63srXqvebap7UG740gCoORQU9lO1bD3Y++0mic7e1I1HCoAxBxqba/lia7tvV+e1La35ZAPwHBA2wvNzs4+sGWnsWeV5oACYHhLb+zFhp0f+0DNzo+92HEIQMqBxl7s2NnYB1p2Nvai4VAIpByqbK/iSWMf+MeOtmc1R0LAcOjX9n7Z29p7O57sbe+PQxpAzJGt7Wx51tR2bM8Trbe2848jCkDMsb+2qto/XjVbO1D98eq3rap2zTEfQMkJmv22riprbVW3/34039IFAI+Tac3JcgABF5HiwOcSYhwkXEKEg5QL0CEOBBeQ4SjQdC9FJ6N7Ah1D51SIjtR0bYVeQtcEejEd83EWKLplcGHolApwESi6lOJGSoeUxI1A0R2DgZjO+CGGMrpSYiTSdCPHHUMn/AD3Erog8ID0OZ/BQ5HiXDmeEJrzZCGeiTmPwHMxZ8nwQqk5h8QLQnGGCK94Bb8X4aUg57f8EG/Eil9RAm/JnF8oIkwhCn5ImRATlQU/UMQBPiAyTuOnHj4lTcE3dGY8fMczieITOktFgDnCKE7zQmleaT9ZGRHAlVBK70jKEFP8ByTizQKTXgbUAAAAAElFTkSuQmCC">
 <img id="youhua_fish" style="display:none" src="https://raw.githubusercontent.com/Raycosine/raycosine.github.io/master/youhua_border-02.png">
@@ -38,7 +41,7 @@ window.requestAnimFrame = (function(){
 var POP = {
 
     // set up some inital values
-    WIDTH: 480, 
+    WIDTH: 320, 
     HEIGHT:  480, 
     scale:  1,
     // the position of the canvas
@@ -140,27 +143,23 @@ var POP = {
 
 
     resize: function() {
-		if(window.innerHeight<window.innerWidth){
-			POP.currentHeight = window.innerHeight;
-			POP.currentWidth = window.innerHeight;
-		}
-		else{
-			POP.currentHeight=window.innerWidth;
-			POP.currentWidth=window.innerWidth;
-			}
+		  POP.currentHeight = window.innerHeight;
+        // resize the width in proportion
+        // to the new height
+        POP.currentWidth = POP.currentHeight * POP.RATIO;
+
         // this will create some extra space on the
         // page, allowing us to scroll pass
         // the address bar, and thus hide it.
         if (POP.android || POP.ios) {
             document.body.style.height = (window.innerHeight + 50) + 'px';
         }
-
         // set the new canvas style width & height
         // note: our canvas is still 320x480 but
         // we're essentially scaling it with CSS
         POP.canvas.style.width = POP.currentWidth + 'px';
         POP.canvas.style.height = POP.currentHeight + 'px';
-
+		
         // the amount by which the css resized canvas
         // is different to the actual (480x320) size.
         POP.scale = POP.currentWidth / POP.WIDTH;
@@ -262,8 +261,8 @@ var POP = {
         var i;
 
 
-        //POP.Draw.rect(0, 0, POP.WIDTH, POP.HEIGHT, '#036');
-		POP.Draw.background(0,0,POP.WIDTH, POP.HEIGHT,'background');
+        POP.Draw.gradient(0, 0, POP.WIDTH, POP.HEIGHT, 'rgb(255,206,17,1)');
+		//POP.Draw.background(0,0,POP.WIDTH, POP.HEIGHT,'background');
         // display snazzy wave effect
         for (i = 0; i < POP.wave.total; i++) {
 
@@ -332,6 +331,14 @@ POP.Draw = {
         POP.ctx.fillRect(x, y, w, h);
     },
 
+
+    gradient: function(x, y, w, h, col) {
+        var grd=POP.ctx.createLinearGradient(0,0,POP.currentWidth,POP.currentHeight);
+		grd.addColorStop(0,"rgb(255,206,17,1)");
+		grd.addColorStop(1,"#ffff00");
+		POP.ctx.fillStyle=grd;
+		POP.ctx.fillRect(0,0,POP.currentWidth,POP.currentHeight)
+    },
 
     background: function(x, y, w, h, ID) {
         var img=document.getElementById(ID);
