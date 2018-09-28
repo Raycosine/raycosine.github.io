@@ -53,13 +53,16 @@ var POP = {
     // the amount of game ticks until
     // we spawn a bubble
     nextBubble: 100,
+	Count: 100,
     // for tracking player's progress
     score: {
         taps: 0,
         hit: 0,
         escaped: 0,
-        accuracy: 0
+        accuracy: 0,
+		life: 5,//hit 5: life++, escaped 1->life--
     },
+	status: 'Preparing',
     // we'll set the rest of these
     // in the init function
     RATIO:  null,
@@ -134,7 +137,7 @@ var POP = {
             // as above
             e.preventDefault();
         }, false);
-
+		POP.status='Running';
         // we're ready to resize
         POP.resize();
 
@@ -183,8 +186,7 @@ var POP = {
         var i,
             checkCollision = false; // we only need to check for a collision
                                 // if the user tapped on this game tick
- 
-
+		//100-0 0-Height
         // decrease our nextBubble counter
         POP.nextBubble -= 1;
         // if the counter is less than zero
@@ -229,6 +231,8 @@ var POP = {
                         )); 
                     }
                     POP.score.hit += 1;
+					if(POP.score.hit%10==0)
+						POP.score.life+=1;
                 }
 
                 POP.entities[i].remove = hit;
@@ -263,7 +267,12 @@ var POP = {
 
 
         //POP.Draw.gradient(0, 0, POP.WIDTH, POP.HEIGHT, 'rgb(255,206,17,1)');
-		POP.Draw.background(0,0,POP.WIDTH, POP.HEIGHT,'background');
+		//POP.Draw.background(0,0,POP.WIDTH, POP.HEIGHT,'background');
+		POP.Draw.background(0,POP.HEIGHT*0.01*(100-POP.Count),POP.WIDTH, POP.HEIGHT,'background');
+		var img=document.getElementById('background');
+        POP.ctx.drawImage(img,0,POP.HEIGHT*0.01*(POP.Count),POP.WIDTH,POP.HEIGHT*0.01*(100-POP.Count),0,0, POP.WIDTH, POP.HEIGHT*0.01*(100-POP.Count));
+		POP.Count-=1;
+		if(POP.Count<0) POP.Count=100;
         // display snazzy wave effect
         for (i = 0; i < POP.wave.total; i++) {
 
@@ -278,12 +287,12 @@ var POP = {
             for (i = 0; i < POP.entities.length; i += 1) {
                 POP.entities[i].render();
         }
-
+		
         // display scores
         POP.Draw.text('Hit: ' + POP.score.hit, 20, 30, 14, '#fff');
         POP.Draw.text('Escaped: ' + POP.score.escaped, 20, 50, 14, '#fff');
-        POP.Draw.text('Accuracy: ' + POP.score.accuracy + '%', 20, 70, 14, '#fff');
-
+        //POP.Draw.text('Accuracy: ' + POP.score.accuracy + '%', 20, 70, 14, '#fff');
+		POP.Draw.text('Life: '+'❤️'.repeat(POP.score.life), 20, 70, 14, '#f22')
     },
 
 
@@ -294,9 +303,24 @@ var POP = {
     loop: function() {
 
         requestAnimFrame( POP.loop );
-
-        POP.update();
-        POP.render();
+		if(POP.status=='End'){
+			POP.Draw.rect(0,0,POP.WIDTH,POP.HEIGHT,'rgb(255,206,17,1)');
+			POP.Draw.text('You Lost',POP.WIDTH/2-10,POP.HEIGHT/2-10,14,'#f22');
+			window.addEventListener('click', function(event) {
+				POP.status='Running';
+				POP.nextBubble=100;
+				POP.Count=100;
+				POP.score.taps=0;
+				POP.score.hit=0;
+				POP.score.escaped=0;
+				POP.score.accuracy=0;
+				POP.score.life=5;
+			});
+		}
+		else{
+			POP.update();
+			POP.render();
+		}
     }
 
 
@@ -438,6 +462,9 @@ POP.Bubble = function() {
         // if offscreen flag for removal
         if (this.y < -10) {
             POP.score.escaped += 1; // update score
+			POP.score.life-=1;
+			if(POP.score.life==0)
+				POP.status='End';
             this.remove = true;
         }
 
