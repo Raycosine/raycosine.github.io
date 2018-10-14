@@ -268,9 +268,11 @@ var POP = {
 
         //POP.Draw.gradient(0, 0, POP.WIDTH, POP.HEIGHT, 'rgb(255,206,17,1)');
 		//POP.Draw.background(0,0,POP.WIDTH, POP.HEIGHT,'background');
-		POP.Draw.background(0,POP.HEIGHT*0.01*(100-POP.Count),POP.WIDTH, POP.HEIGHT,'background');
+		//100 initial -->0 100-->0...
+		//
+		POP.Draw.background(0,POP.HEIGHT*0.01*(POP.Count),POP.WIDTH, POP.HEIGHT,'background');
 		var img=document.getElementById('background');
-        POP.ctx.drawImage(img,0,POP.HEIGHT*0.01*(POP.Count),POP.WIDTH,POP.HEIGHT*0.01*(100-POP.Count),0,0, POP.WIDTH, POP.HEIGHT*0.01*(100-POP.Count));
+        POP.ctx.drawImage(img,0,POP.HEIGHT*0.01*(100-POP.Count),POP.WIDTH,POP.HEIGHT*0.01*(POP.Count),0,0, POP.WIDTH, POP.HEIGHT*0.01*(POP.Count));
 		POP.Count-=1;
 		if(POP.Count<0) POP.Count=100;
         // display snazzy wave effect
@@ -305,7 +307,7 @@ var POP = {
         requestAnimFrame( POP.loop );
 		if(POP.status=='End'){
 			POP.Draw.rect(0,0,POP.WIDTH,POP.HEIGHT,'rgb(255,206,17,1)');
-			POP.Draw.text('You Lost',POP.WIDTH/2-10,POP.HEIGHT/2-10,14,'#f22');
+			POP.Draw.text('You Lost￣□￣',100,180,14,'#f22');
 			window.addEventListener('click', function(event) {
 				POP.status='Running';
 				POP.nextBubble=100;
