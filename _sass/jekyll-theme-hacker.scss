@@ -52,11 +52,12 @@ header {
 
   background: rgba(0, 0, 0, 0.8);
   width: 100%;
-  box-shadow: 0px 0px 10px #000088,
-			  0px 10px 10px #000044,
-			  0px 20px 20px #000000;
+  min-height: 10%;
+  box-shadow: 0px 0px 5px #0000e8,
+			  0px 15px 25px #000044,
+			  0px 40px 35px #000000;
   //border-bottom: 1px dashed $conifer; //header;
-  padding: 20px 0;
+  padding: 20px 0 0 0;
   margin: 0 0 40px 0;
 }
 
@@ -86,6 +87,7 @@ header h2 {
   font-size: 18px;
   font-weight: 300;
   color: #666;
+  opacity:0.8;
 }
 
 #downloads .btn {
