@@ -5,7 +5,6 @@ categories: quantum
 tags: note paper quantum-circuit-learning
 author: wyj
 date:   2018-12-16 18:50:00 +0800
-mermaid: true
 ---
 
 This is a brief note on quantum circuit learning and following papers:
