@@ -39,17 +39,45 @@ The remaining contents of this QCL paper can be divided into two parts: ability 
 <a name='approfunc'></a>Approximate function
 ---
 
-1. one-dimension input
+### One-dimensional Input
 
 One-dimension means the quantum state are N qubits.
 
-Let \\(x\\) and \\(\rho_{in}=\|\psi_{in}(x)\rangle\langle\psi_{in}(x)\|\\) be an input data and a corresponding density operator of input state. \\(\rho_{in}(x)\\) can be expanded by a set of Puali operators \\(\\{P_k\\}=\\{I,X,Y,Z\\}^{\otimes N}\\) with \\(a_k(x)\\) as coeeficients, 
+Let \\(x\\) and \\(\rho_{in}=\|\psi_{in}(x)\rangle\langle\psi_{in}(x)\|\\) be an input data and a corresponding density operator of input state. \\(\rho_{in}(x)\\) can be expanded by a set of Pauli operators \\(\\{P_k\\}=\\{I,X,Y,Z\\}^{\otimes N}\\) with \\(a_k(x)\\) as coefficients, 
 
 $$\rho_{in}(x)=\sum_k a_k (x) P_k$$
 
+A parameterized unitary transformation \\(U(\theta)\\) acting on \\(\rho_{in}(x)\\) creates the output state, \\(b_m(x,\theta)=\sum_k u_{mk}(\theta) a_k(x)\\). Thus the output can be considered as a linear combination of the input coefficient functions \\(a_k\\) under unitarity constraints imposed on \\(\\{u_{ij}\\}\\).
+
+### Approximate Analytical Function
+If f(x) is an analytical function, QCL can approximate it by single-qubit rotations with input state as
+
+$$\rho_{in}(x)=\frac{1}{2^N} \otimes_{i=1}^N [I+xX_i+\sqrt{1-x^2} Z_i]$$
+
+This state can be generated for any \\(x\in [-1,1]\\) with single-qubit rotations, namely, \\(\Pi_{i=1}^N R_i^Y (sin^{-1} x)\\). And \\(I+xX_i+\sqrt{1-x^2} Z_i=R_y(sin^{-1}x)\|0\rangle\langle 0\|R_y^\dagger(sin^{-1}x)\\).
+
+An arbitrary $N$th order polynomial is corresponding to an expectation value of an observable applied on such a state, which is generated to an arbitrary unitary transformation.
+
+Since \\(U(\theta)\\) is unitary, the parameter \\(u_i\\) can prevents overfitting if we use the L2 regularization in cost function.
+
+For me, two questions are left open:
+- Why terms like \\(x\sqrt{1-x^2}\\) can enhance its ability to approximate a function?
+- Details about extracting \\(x^N\\) from \\(\rho_{in}(x)\\) by entangling gate?
+
+### Multi-dimensional Input
+
+Assume that the input data is d-dimensional, \\(x=\\{x_1,x_2,...,x_d\\}\\). And we want higher terms up to the \\(n_k\\)th (k=1,2,...,d) for each data. The polynomial being approximated is multi-variable \\((x_1, x_2, ..., x_d)\\) and each variable \\(x_k\\) has higher terms up to \\(n_k\\).
+
+### Approximate complex function
+
+Since we can use unlimited resource in the learning process of QCL. For learning the relation between inputs and outputs of a quantum circuit, QCL has the potential power to represent more complex functions than the classical counterpart. But further investigations are needed including the learning costs and which actual learning problem enjoys such an advantage.
 
 <a name='optipro'></a>Optimization procedure
 ---
+
+In quantum variational eigensolver (QVE) algorithm, it has been suggested to use gradient-free methods. But gradient-based methods are generally more preferred when the parameter space becomes large.
+
+### Calculate a gradient of an expectation value
 
 
 Swap Test
