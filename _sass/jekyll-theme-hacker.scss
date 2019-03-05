@@ -11,11 +11,12 @@ $blockquote-border: $dove-grey !default;
 body {
   margin: 0;
   padding: 0;
-  background: $body-background url("../images/bkg.png") 0 0;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  color: $body-foreground;
+  //background-color: #eeeeaa
+  //background-image: url("../images/icon-schrodinger-cat-big.png");
+  //background-repeat: repeat-x;
+  //background-size: cover;
+  //background-position: center;
+  //color: $body-foreground;
   font-size: 16px;
   line-height: 1.5;
   font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace, "Microsoft YaHei","Microsoft YaHei";
@@ -50,12 +51,14 @@ li {
 
 header {
 
-  background: rgba(0, 0, 0, 0.8);
   width: 100%;
   min-height: 10%;
-  box-shadow: 0px 0px 5px #0000e8,
-			  0px 15px 25px #000044,
-			  0px 40px 35px #000000;
+  //background-image: url('../images/bullet.png');
+  //background-color: #eeeeff;
+  //background-repeat: repeat;
+  box-shadow: 0px 0px 5px #eeeeff,
+			  0px 3px 7px #eeffff,
+			  0px 5px 10px #ffffff;
   //border-bottom: 1px dashed $conifer; //header;
   padding: 20px 0 0 0;
   margin: 0 0 40px 0;
@@ -67,10 +70,10 @@ header h1 {
   margin: 0 0 0 -40px;
   font-weight: bold;
   font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace, "Microsoft YaHei","Microsoft YaHei";
-  color: $conifer;//$header;
+  color: black;//$header;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1),
-               0 0 5px rgba(181, 83, 232, 0.1),
-               0 0 10px rgba(181, 83, 232, 0.1);
+               0 0 2px rgba(181, 83, 232, 0.1),
+               0 0 5px rgba(181, 83, 232, 0.1);
   letter-spacing: -1px;
   -webkit-font-smoothing: antialiased;
 }
@@ -84,7 +87,7 @@ header h1:after {
   font-size: 24px;
  }
 header h2 {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 300;
   color: #666;
   opacity:0.8;
@@ -110,11 +113,11 @@ section img {
 h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
   font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace, "Microsoft YaHei","Microsoft YaHei";
-  color: $header;
+  color: black;
   letter-spacing: -0.03em;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1),
-               0 0 5px rgba(181, 232, 83, 0.1),
-               0 0 10px rgba(181, 232, 83, 0.1);
+               0 0 5px rgba(181, 83, 232, 0.1),
+               0 0 10px rgba(181, 83, 232, 0.1);
 }
 
 #main_content h1 {
@@ -154,6 +157,15 @@ dt {
 ul li {
   list-style-image:url('../images/bullet.png');
 }
+
+ul li h3 a.post-meta:before {
+	content: " |";
+	font-size: 18px;
+	}
+ul li h3 a.post-meta:after {
+  content: "⟩";
+  font-size: 18px;
+ }
 
 blockquote {
   color: $blockquote-color;
@@ -246,7 +258,7 @@ hr {
 */
 
 a {
-  color: #63c0f5;
+  color: #668866;
   text-shadow: 0 0 5px rgba(104, 182, 255, 0.5);
 }
 
