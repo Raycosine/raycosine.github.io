@@ -17,8 +17,8 @@
 </script>
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 {% seo %}
-<!--
-<script>
+
+<!--script>
 		var svgNS="http://www.w3.org/2000/svg";
 		window.onload= function (){
 		var hl=document.getElementById("header_line");
@@ -36,7 +36,8 @@
 		hp1.setAttributeNS(null,"strokeWidth","20");
 		hl.appendChild(hp1);
 		}
-	</script>-->
+	</script>
+-->
   </head>
 
   <body>
@@ -57,6 +58,14 @@
 		</defs>
 		
 	</svg>-->
+	<svg id="header_box" viewBox="0 0 50 50" style="display:float;width:30%;margin-bottom:-750px;">
+		<defs>
+			<style>
+				.bg-box{fill:#000000;}
+			<style>
+		</defs>
+		<rect class="bg-box" x="0" y="0" width="50" height="20"></rect>
+	</svg>
       <div class="container">
         <h1>{{ site.title | default: site.github.repository_name }}</h1>
         <h2>{{ site.description | default: site.github.project_tagline }}</h2>
