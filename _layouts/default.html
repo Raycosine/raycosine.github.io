@@ -60,8 +60,12 @@
 	</svg>-->
 
       <div class="container">
-        <h1>{{ site.title | default: site.github.repository_name }}</h1>
-        <h2>{{ site.description | default: site.github.project_tagline }}</h2>
+		<div class="qstate_des">
+        <h1>|{{ site.title | default: site.github.repository_name }} ⟩</h1>
+		
+		</div>
+		
+       <!-- <h2>{{ site.description | default: site.github.project_tagline }}</h2>-->
   <!--      <section id="downloads">
           {% if site.show_downloads %}
             <a href="{{ site.github.zip_url }}" class="btn">Download as .zip</a>
