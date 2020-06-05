@@ -4,7 +4,7 @@ title:  "Notes on quantum walk and quantum simulated annealing"
 categories: quantum
 tags: note textbook-reading quantum-walk
 author: wyj
-date:   2019-06-05 04:08:00 -0700
+date:   2019-02-09 17:30:00 +0800
 ---
 
 These are notes on quantum walk and quantum simulated annealing, mainly based on:
@@ -31,26 +31,26 @@ These are notes on quantum walk and quantum simulated annealing, mainly based on
 > It is easiest to define a quantum analog of a continuous-time random walk
 
 #### Classical continuous-time random walk
-Adjacency matrix $$A$$ & Laplacian $$L$$: as you know
+Adjacency matrix \\(A\\) & Laplacian \\(L\\): as you know
 
 > The continuous-time random walk on G is defined as the solution of the differential equation
-$\frac{d}{dt} p_j (t) = \sum_{k\in V} L_{jk} p_k (t)$
+\\(\frac{d}{dt} p_j (t) = \sum_{k\in V} L_{jk} p_k (t)\\)
 
-The evolution for any time $$t$$ is a *stochastic processes* (normalization preserved) since the columns of L sum to $$0$$.
+The evolution for any time \\(t\\) is a *stochastic processes* (normalization preserved) since the columns of L sum to \\(0\\).
 
 #### The quantum analog
 
 Compared to the Schrodinger equation:
-$i\frac{d}{dt}|\psi\rangle=H|\psi\rangle$
+\\(i\frac{d}{dt}\|\psi\rangle=H\|\psi\rangle\\)
 
-Let $$q_j(t)=\langle j|\psi(t)\rangle$$ be quantum amplitudes. The equation is
+Let \\(q_j(t)=\langle j\|\psi(t)\rangle\\) be quantum amplitudes. The equation is
 
-$i\frac{d}{dt}q_j(t)=\sum_{k\in V} L_{jk} q_k(t)$.
+\\(i\frac{d}{dt}q_j(t)=\sum_{k\in V} L_{jk} q_k(t)\\).
 
 Normalization preserved since Laplacian is Hermitian.
 
-Solution: $$|\psi(t)\rangle=e^{-iLt} |\psi(0)\rangle$$
+Solution: \\(\|\psi(t)\rangle=e^{-iLt} \|\psi(0)\rangle\\)
 
-Note: Any Hermitian Hamiltonian that represents the structure of $$G$$ can be used.
+Note: Any Hermitian Hamiltonian that represents the structure of \\(G\\) can be used.
 
 ### 16.2 Random and quantum walks on the hypercube
