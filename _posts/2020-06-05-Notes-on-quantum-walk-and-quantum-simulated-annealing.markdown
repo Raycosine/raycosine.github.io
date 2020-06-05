@@ -21,7 +21,14 @@ These are notes on quantum walk and quantum simulated annealing, mainly based on
 - Quantum search by measurement (arXiv: 0204013)
 - Exponential algorithmic speedup by quantum walk (arXiv: 0209131)
 
-[toc]
+## Table of contents
+- [Continuous-time quantum walk](#continuous-time-quantum-walk)
+  * [16.1 Continuous-time quantum walk](#161-continuous-time-quantum-walk)
+    + [Classical continuous-time random walk](#classical-continuous-time-random-walk)
+    + [The quantum analog](#the-quantum-analog)
+    + [Recap](#recap)
+  * [16.2 Random and quantum walks on the hypercube](#162-random-and-quantum-walks-on-the-hypercube)
+
 
 ## Continuous-time quantum walk
 
@@ -52,5 +59,12 @@ Normalization preserved since Laplacian is Hermitian.
 Solution: \\(\|\psi(t)\rangle=e^{-iLt} \|\psi(0)\rangle\\)
 
 Note: Any Hermitian Hamiltonian that represents the structure of \\(G\\) can be used.
+
+#### Recap
+
+| classical continuous-time random walk | Schrodinger equation | the quantum analog |
+| ------------------------------------- | -------------------- | ------------------ |
+| \\(\frac{d}{dt} p_j (t) = \sum_{k\in V} L_{jk} p_k (t)\\) | \\(i\frac{d}{dt}\|\psi\rangle=H\|\psi\rangle\\) | \\(i\frac{d}{dt}q_j(t)=\sum_{k\in V} L_{jk} q_k(t)\\) |
+
 
 ### 16.2 Random and quantum walks on the hypercube
