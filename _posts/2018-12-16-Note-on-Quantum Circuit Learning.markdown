@@ -2,7 +2,7 @@
 layout: post
 title:  "A Brief Note on Quantum Circuit Learning"
 categories: quantum
-tags: note paper quantum-circuit-learning
+tags: note paper-reading quantum-circuit-learning
 author: wyj
 date:   2018-12-16 18:50:00 +0800
 ---
@@ -43,7 +43,7 @@ The remaining contents of this QCL paper can be divided into two parts: ability 
 
 One-dimension means the quantum state are N qubits.
 
-Let \\(x\\) and \\(\rho_{in}=\|\psi_{in}(x)\rangle\langle\psi_{in}(x)\|\\) be an input data and a corresponding density operator of input state. \\(\rho_{in}(x)\\) can be expanded by a set of Pauli operators \\(\\{P_k\\}=\\{I,X,Y,Z\\}^{\otimes N}\\) with \\(a_k(x)\\) as coefficients, 
+Let \\(x\\) and \\(\rho_{in}=\|\psi_{in}(x)\rangle\langle\psi_{in}(x)\|\\) be an input data and a corresponding density operator of input state. \\(\rho_{in}(x)\\) can be expanded by a set of Pauli operators \\(\\{P_k\\}=\\{I,X,Y,Z\\}^{\otimes N}\\) with \\(a_k(x)\\) as coefficients,
 
 $$\rho_{in}(x)=\sum_k a_k (x) P_k$$
 
@@ -99,4 +99,3 @@ The last NOT gate simply relabels \\(\|0\rangle_B \leftrightarrow \|1\rangle_B\\
 $$|1\rangle_B\otimes P_1|\Psi\rangle_A + |0\rangle_B\otimes P_0|\Psi\rangle_A$$
 
 Thus, the probability of getting outcome \\(j\\) is equal to \\(\langle \Psi_A\| P_j \|\Psi_A\rangle\\).
-

@@ -2,7 +2,7 @@
 layout: post
 title:  "Evaluating analytic gradients on quantum hardware"
 categories: quantum
-tags: note paper evaluating-analytic-gradients
+tags: note paper-reading evaluating-analytic-gradients
 author: wyj
 date:   2019-02-09 17:30:00 +0800
 ---
@@ -35,9 +35,9 @@ Following Stern-Gerlach type measuremnts on a single qubit, performing a project
 $$\langle\hat{\sigma}_n\rangle=Tr(\hat{\sigma}_n\hat{\rho})=n\cdot r$$
 
 
-For example, \\(n=(1,0,0)\\) means \\(x+\\) axis. 
+For example, \\(n=(1,0,0)\\) means \\(x+\\) axis.
 
-And \\(\hat{\sigma}_n=n\cdot\hat{\sigma}\\),\\(=\sum{n_i\cdot\hat{\sigma}_i}(i=x,y,z)\\), 
+And \\(\hat{\sigma}_n=n\cdot\hat{\sigma}\\),\\(=\sum{n_i\cdot\hat{\sigma}_i}(i=x,y,z)\\),
 which can derive \\(\langle\hat{\sigma}_n\rangle=n\cdot r\\). The probability for detecting the qubit in the 'up'\/'down' state are \\(p_{\uparrow}(n)=\frac{1+n\cdot r}{2}, p_{downarrow}(n)=\frac{1-n\cdot r}{2}\\).
 
 
@@ -66,4 +66,4 @@ Minimum p-distance of the Bloch vectors
 
 Simplest family of distances between two \\(Bloch\ vectors\\) are the \\(p\\)-distances \\(\|\|r-r^\prime\|\|_p=(\|x-x^\prime\|^p+\|y-y^\prime\|^\prime+\|z-z^\prime\|^p)^{1/p}\\) for \\(p\geq 1\\).
 
-p=2, Euclidean distance 
+p=2, Euclidean distance
