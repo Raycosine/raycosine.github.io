@@ -15,7 +15,11 @@ This is a note about [Evaluating analytic gradients on quantum hardware](https:/
 Summary:
 
 - for any gate of the form $$\mathscr{G}=e^{-i\mu G}$$, where the Hermitian generator $G$ has **at most two distinct eigenvalues**, the parameter shift rule holds.
-- **any other gate** can be handled by a method that involves a coherent *linear combination of unitaries* routine.
+- **any other gate** can be handled by a method that involves a coherent *linear combination of unitaries* routine. Require a single ancilla qubit.
+- for CVQC: parameter shift rules for Gaussian gates.
+-
+
+
 
 
 #Basic concepts - density matrix, expectation value

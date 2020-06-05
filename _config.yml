@@ -18,7 +18,7 @@ title_line1: Raycosine's
 title_line2: blog
 email: raycosine@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Raycosine is learning quantum physics and martial arts now but still a beginner (蒟蒻). 
+  Raycosine is still a beginner (蒟蒻). 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: raycosine
