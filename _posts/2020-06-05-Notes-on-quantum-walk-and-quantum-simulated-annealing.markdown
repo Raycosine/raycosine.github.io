@@ -140,7 +140,7 @@ Use the spectral decomposition of \\(L\\). In \\(p(t)\\), terms of eigenvectors 
 
 \\(p_{a\rightarrow b} (T)=\sum_\lambda \| \langle a\| \lambda\rangle \langle b\|\lambda \rangle \|^2 + \sum_{\lambda\neq \lambda^\prime} \langle b\|\lambda\rangle \langle \lambda \| a\rangle \langle a\|\lambda^\prime\rangle \langle \lambda^\prime \|b\rangle \frac{1-e^{-i(\lambda-\lambda^\prime)T}}{i(\lambda-\lambda^\prime)T}\\)
 
-Roughly speaking, since we expect \\(\|\lambda-\lambda^\prime)T\|>>1\\), \\(T>>\frac{1}{\|\lambda-\lambda^\prime\|}\\)
+Roughly speaking, since we expect \\(\|(\lambda-\lambda^\prime)T\|>>1\\), \\(T>>\frac{1}{\|\lambda-\lambda^\prime\|}\\)
 
 Limiting distribution:
 
