@@ -28,6 +28,12 @@ These are notes on quantum walk and quantum simulated annealing, mainly based on
     + [The quantum analog](#the-quantum-analog)
     + [Recap](#recap)
   * [16.2 Random and quantum walks on the hypercube](#162-random-and-quantum-walks-on-the-hypercube)
+  * [16.3 Random and quantum walks in one dimension](#163-random-and-quantum-walks-in-one-dimension)
+  * [16.4 Black-box traversal of the glued trees graph](#164-black-box-traversal-of-the-glued-trees-graph)
+  * [16.5 Quantum walk algorithm to traverse the glued trees graph](#165-quantum-walk-algorithm-to-traverse-the-glued-trees-graph)
+  * [16.6 Classical and quantum mixing](#166-classical-and-quantum-mixing)
+    + [Understanding the spectrum of A](#understanding-the-spectrum-of-a)
+  * [16.7 Classical lower bound](#167-classical-lower-bound)
 
 
 ## Continuous-time quantum walk
