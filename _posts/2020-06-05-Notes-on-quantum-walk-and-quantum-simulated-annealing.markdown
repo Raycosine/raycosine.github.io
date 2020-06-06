@@ -4,7 +4,7 @@ title:  "Notes on quantum walk and quantum simulated annealing"
 categories: quantum
 tags: note textbook-reading quantum-walk
 author: wyj
-date:   2019-02-09 17:30:00 +0800
+date:   2019-06-05 17:30:00 -0700
 ---
 
 These are notes on quantum walk and quantum simulated annealing, mainly based on:
