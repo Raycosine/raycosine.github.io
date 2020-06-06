@@ -4,7 +4,7 @@ title:  "Evaluating analytic gradients on quantum hardware"
 categories: quantum
 tags: note paper-reading evaluating-analytic-gradients
 author: wyj
-date:   2019-02-09 17:30:00 +0800
+date:   2019-06-04 17:30:00 +0800
 ---
 
 This is a note about [Evaluating analytic gradients on quantum hardware](https://arxiv.org/abs/1811.11184).
