@@ -156,7 +156,7 @@ Formally speaking, the "distance" between the probability of reaching \\(EXIT\\)
 
 \\(\|(p_{ENTRANCE\rightarrow EXIT}(\infty)-(p_{ENTRANCE\rightarrow EXIT}(T)\|\leq\frac{2}{\Delta T}\\), where \\(\Delta\\) denotes the smallest gap between any pair of distinct eigenvalues of \\(A\\).
 
-? Why we need to lower bound \\(\Delta\\)?
+? Why do we need to lower bound \\(\Delta\\)?
 
 #### Understanding the spectrum of A
 
@@ -164,11 +164,11 @@ Recall that for any \\(p\\), the state \\(\|\lambda\rangle\\) with amplitudes \\
 
 (Spielman was one of the authors of quant-ph/0209131...orz)
 
-? Does \\(T=5n/\Delta\\) only refer to the n=4 case?
+? Does \\(T=5n/\Delta\\) only apply to the n=4 case?
 
 ### 16.7 Classical lower bound
 
 Solving (A or B) is hard --> solving A is hard
 
-? In the first step, what's the variable considered while talking about "exponentially many more possible names" and "exponentially small probability"? The number of possible names seems to be just approximately the square of \\(\|V\|\\).
+? In the first step, is \\(n\\) considered while talking about "exponentially many more possible names" and "exponentially small probability"? The number of possible names seems to be just approximately the square of \\(\|V\|\\).
 
