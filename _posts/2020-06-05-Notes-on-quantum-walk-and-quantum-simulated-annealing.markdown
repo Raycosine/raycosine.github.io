@@ -22,7 +22,7 @@ These are notes on quantum walk and quantum simulated annealing, mainly based on
 - Exponential algorithmic speedup by quantum walk (arXiv: 0209131) (to-read)
 
 ## Table of contents
-- [Continuous-time quantum walk](#continuous-time-quantum-walk)
+- [16 Continuous-time quantum walk](#16-continuous-time-quantum-walk)
   * [16.1 Continuous-time quantum walk](#161-continuous-time-quantum-walk)
     + [Classical continuous-time random walk](#classical-continuous-time-random-walk)
     + [The quantum analog](#the-quantum-analog)
@@ -34,9 +34,12 @@ These are notes on quantum walk and quantum simulated annealing, mainly based on
   * [16.6 Classical and quantum mixing](#166-classical-and-quantum-mixing)
     + [Understanding the spectrum of A](#understanding-the-spectrum-of-a)
   * [16.7 Classical lower bound](#167-classical-lower-bound)
+- [17 Discrete-time quantum walk](#17-discrete-time-quantum-walk)
+  * [17.1 Discrete-time quantum walk](#171-discrete-time-quantum-walk)
+  * [17.2 How to quantize a Markov chain](#172-how-to-quantize-a-markov-chain)
 
 
-## Continuous-time quantum walk
+## 16 Continuous-time quantum walk
 
 
 ### 16.1 Continuous-time quantum walk
@@ -91,7 +94,7 @@ The graph: an infinite path, unweighted
 
 The eigenstates of \\(L\\): momentum states \\(\|\hat{p}\rangle\\) with components \\(\langle j\| \hat{p}\rangle=e^{ipj}\\).
 
-I don't know Bessel function..I like vegetable so much...
+I don't know Bessel function..I like vegetables so much...
 
 The continuous-time classical random walk and the quantum analog have dramatically different behaviors.
 
@@ -171,4 +174,26 @@ Recall that for any \\(p\\), the state \\(\|\lambda\rangle\\) with amplitudes \\
 Solving (A or B) is hard --> solving A is hard
 
 ? In the first step, is \\(n\\) considered while talking about "exponentially many more possible names" and "exponentially small probability"? The number of possible names seems to be just approximately the square of \\(\|V\|\\).
+
+## 17 Discrete-time quantum walk
+
+> provides a convenient framework for quantum search algorithms
+
+### 17.1 Discrete-time quantum walk
+
+To move in the same way as discrete-time classical walk, the transformation of the quantum walk would be nonunitary, which could be fixed by using an enlarged Hilbert space (spanned by \\(\{\|j,k\rangle: (j,k)\in E\}\\), "a walker at vertex \\(j\\) that will move toward vertex \\(k\\)), more precisely, using an ancillary "coin flip" register.
+
+(Hmm..sounds similar to clock register used in some gadgets of the local Hamiltonian problem...)
+
+A single step of the quantum walk:
+> 1. We apply a unitary transformation that operates on the second register conditional on the ﬁrst register
+> 2. The walker is moved to the vertex indicated in the second register
+
+Grover diffusion operator? SWAP the only way to make step 2 unitary?
+
+### 17.2 How to quantize a Markov chain
+
+A more convenient framework.
+
+TBD...
 
