@@ -4,16 +4,17 @@ title:  "Notes on quantum walk and quantum simulated annealing"
 categories: quantum
 tags: note textbook-reading quantum-walk
 author: wyj
-date:   2019-06-05 17:30:00 -0700
+date:   2020-06-05 17:30:00 -0700
 ---
 
 These are notes on quantum walk and quantum simulated annealing, mainly based on:
 
 - Sec III of [Lecture Notes on Quantum Algorithms by Andrew Childs](https://www.cs.umd.edu/~amchilds/qa/)
   - Chapter 16: Continuous-time quantum walk (read) (note-taken)
-  - Chapter 17: Discrete-time quantum walk (to-read)
+  - Chapter 17: Discrete-time quantum walk (to-read) (note-taken)
 - Quantum algorithms for simulated annealing (arXiv: 1512.03806) (read)
 - Quantum simulations of classical annealing processes (arXiv: 0804.1571) (read)
+- Quantum simulations of classical random walks and undirected graph connectivity (arXiv: cs/9812012) (partially-read) (note-taken)
 - Spectral gap amplification (arXiv: 1110.2494) (to-read)
 - Quantum walk algorithm for element distinctness (arXiv: 0311001) (to-read)
 - Quantum speed-up of Markov chain based Algorithms (to-read)
@@ -37,6 +38,9 @@ These are notes on quantum walk and quantum simulated annealing, mainly based on
 - [17 Discrete-time quantum walk](#17-discrete-time-quantum-walk)
   * [17.1 Discrete-time quantum walk](#171-discrete-time-quantum-walk)
   * [17.2 How to quantize a Markov chain](#172-how-to-quantize-a-markov-chain)
+  * [17.3 Spectrum of the quantum walk](#173-spectrum-of-the-quantum-walk)
+  * [17.4 Hitting times](#174-hitting-times)
+- [Quantum simulations of classical random walks and undirected graph connectivity](#quantum-simulations-of-classical-random-walks-and-undirected-graph-connectivity)
 
 
 ## 16 Continuous-time quantum walk
@@ -183,17 +187,74 @@ Solving (A or B) is hard --> solving A is hard
 
 To move in the same way as discrete-time classical walk, the transformation of the quantum walk would be nonunitary, which could be fixed by using an enlarged Hilbert space (spanned by \\(\{\|j,k\rangle: (j,k)\in E\}\\), "a walker at vertex \\(j\\) that will move toward vertex \\(k\\)), more precisely, using an ancillary "coin flip" register.
 
+See next section for detail.
+
 (Hmm..sounds similar to clock register used in some gadgets of the local Hamiltonian problem...)
 
 A single step of the quantum walk:
 > 1. We apply a unitary transformation that operates on the second register conditional on the ﬁrst register
 > 2. The walker is moved to the vertex indicated in the second register
 
-Grover diffusion operator? SWAP the only way to make step 2 unitary?
+? SWAP the only way to make step 2 unitary?
 
 ### 17.2 How to quantize a Markov chain
 
-A more convenient framework.
+> A more convenient framework introduced by Szegedy \[94\] (not-read)
 
-TBD...
+At least by now I can't see any difference between this section and \[96\]...
 
+In the first paragraph, \\(P_{jk}\\) should be \\(P_{kj}\\) instead.
+)
+A single step of the quantum walk: \\(U:= S(2\Pi-1)\\), where \\(\Pi\\) is the projection onto \\(span\{\|\psi_j\rangle\}\\) and \\(S\\) is the swap operator (see [the following paper-reading section](#quantum-simulations-of-classical-random-walks-and-undirected-graph-connectivity)).
+
+### 17.3 Spectrum of the quantum walk
+
+Define:
+
+\\(D\\): \\(N*N\\) matrix, \\(D_{jk} = \sqrt{P_{jk} P_{kj}}\\) with eigenvalues \\(\{\lambda\}\\).
+
+\\(T\\): an isometry, \\(T:=\sum_{j=1}^N \|\psi_j\rangle \langle j\|\\).
+
+\\(\|\tilde{\lambda}\rangle\\): \\(T\|\lambda\rangle\\). 
+
+\\(TT^\dag, T\dag T, T\dag ST\\) are equal to \\(\Pi, I, D\\) respectively.
+
+Then we can notice that some of \\(U\\)'s eigenvectors lie within \\(span\{\|\tilde{\lambda}\rangle, S\|\tilde{\lambda}\rangle\}\\).
+
+### 17.4 Hitting times
+
+Problem: to decide whether any vertex in G is marked.
+
+Modify the walk by reordering the vertices (unmarked first, marked second).
+
+The remaining as you know.
+
+## Quantum simulations of classical random walks and undirected graph connectivity
+
+This paper was cited as \[96\] in [17.1](#171-discrete-time-quantum-walk) of Childs' notes. I only read *3 Quantum operators* to better understand [17](#17-discrete-time-quantum-walk) and concepts in the first two simulate annealing papers as listed above.
+
+Definitions (copied from the original source):
+
+The graph \\(G=(V,E)\\), undirected \& regular of degree \\(d\\).
+
+\\(n=\|V\|, m=\|E\|\\)
+
+\\(\forall u\in V, S(u)=\{v\in V: \{u,v\} \in E\}, B(u)=S(u) \cup \{u\}.\\)
+
+The "diffusion" operator in quantum walk:
+
+| transformation  | unitary representation | "diffusion" operator in Grover's searching algorithm |
+| :---: | :---: | :---: |
+| \\(F\|u,v\rangle=\|u,v\rangle-\frac{2}{d+1} \sum_{v^\prime \in B(u)} \|u,v^\prime\rangle (v\in B(u)), \|u,v\rangle (v\notin B(u))\\) | \\(F=I-2\sum_{u\in V} \|\psi_u\rangle\langle \psi_u \|\\) | \\(D\|a\rangle=\|a\rangle -\frac{2}{d+1} \sum_{b=0}^d \|b\rangle\\) |
+
+\\(\|u,v\rangle\\) could sometimes be taken as \\(\|u\rangle\otimes\|v\rangle\\), just like [17.1](#171-discrete-time-quantum-walk).
+
+\\(\|\psi_u\rangle=\frac{1}{\sqrt{d+1}}\sum_{v\in B_u} \|u,v\rangle\\)
+
+In [17.1](#171-discrete-time-quantum-walk), only \\(\{v:v\in S_u\}\\) are considered, and \\(F\\) is defined as 
+
+\\(C:=\sum_{j\in V} \|j\rangle\langle j\| \otimes (2\|\partial j\rangle\langle \partial j\|-I)\\), where \\(\|j\rangle \otimes |\partial j\rangle\\) is the analog of \\(\|\psi_u\rangle\\).
+
+Also, we need swap operator \\(X=\sum_{u,v\in V} \|v,u\rangle\langle u,v\rangle \\) and projection \\(P=\sum_{u\in V} \|u,u\rangle\langle u,u\|\\).
+
+Then a single step of quantum walk is \\(Q=PFXFP\\). See lemma 3 for the proof that after a large number of steps starting from \\(u\\), the distribution would be close to the uniform distribution on \\(S(u)\\).
