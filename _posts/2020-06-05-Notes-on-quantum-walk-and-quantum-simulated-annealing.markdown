@@ -11,7 +11,7 @@ These are notes on quantum walk and quantum simulated annealing, mainly based on
 
 - Sec III of [Lecture Notes on Quantum Algorithms by Andrew Childs](https://www.cs.umd.edu/~amchilds/qa/)
   - Chapter 16: Continuous-time quantum walk (read) (note-taken)
-  - Chapter 17: Discrete-time quantum walk (to-read) (note-taken)
+  - Chapter 17: Discrete-time quantum walk (read) (note-taken)
 - Quantum algorithms for simulated annealing (arXiv: 1512.03806) (read)
 - Quantum simulations of classical annealing processes (arXiv: 0804.1571) (read)
 - Quantum simulations of classical random walks and undirected graph connectivity (arXiv: cs/9812012) (partially-read) (note-taken)
@@ -167,7 +167,7 @@ Formally speaking, the "distance" between the probability of reaching \\(EXIT\\)
 
 #### Understanding the spectrum of A
 
-Recall that for any \\(p\\), the state \\(\|\lambda\rangle\\) with amplitudes \\(\langle col j\|\lambda\rangle = e^{ipj}\\) satisfies \\(\langle col j\|A\|\lambda\rangle =\lambda \langle col j\|\lambda\rangle\\), where \\(\lambda=2\sqrt{2} \cos{p}\\) for all values of \\(j\\) except \\(0,n,n+1,2n+1\\). The eigenvalue condition (\\(\langle col j\|A\|\lambda\rangle =\lambda \langle col j\|\lambda\rangle\\)) for \\(j=0,2n+1, n, n+1\\) can be satisfied by replacing \\(\|\lambda\rangle\\) by linear combination of \\(\{\|\lambda\rangle\}\\) previously used. And then we obtain (16.51)~(16.53).
+Recall that for any \\(p\\), the state \\(\|\lambda\rangle\\) with amplitudes \\(\langle col j\|\lambda\rangle = e^{ipj}\\) satisfies \\(\langle col j\|A\|\lambda\rangle =\lambda \langle col j\|\lambda\rangle\\), where \\(\lambda=2\sqrt{2} \cos{p}\\) for all values of \\(j\\) except \\(0,n,n+1,2n+1\\). The eigenvalue condition (\\(\langle col j\|A\|\lambda\rangle =\lambda \langle col j\|\lambda\rangle\\)) for \\(j=0,2n+1, n, n+1\\) can be satisfied by replacing \\(\|\lambda\rangle\\) by linear combination of \\({\|\lambda\rangle}\\) previously used. And then we obtain (16.51)~(16.53).
 
 (Spielman was one of the authors of quant-ph/0209131...orz)
 
@@ -185,7 +185,7 @@ Solving (A or B) is hard --> solving A is hard
 
 ### 17.1 Discrete-time quantum walk
 
-To move in the same way as discrete-time classical walk, the transformation of the quantum walk would be nonunitary, which could be fixed by using an enlarged Hilbert space (spanned by \\(\{\|j,k\rangle: (j,k)\in E\}\\), "a walker at vertex \\(j\\) that will move toward vertex \\(k\\)), more precisely, using an ancillary "coin flip" register.
+To move in the same way as discrete-time classical walk, the transformation of the quantum walk would be nonunitary, which could be fixed by using an enlarged Hilbert space (spanned by \\({\|j,k\rangle: (j,k)\in E}\\), "a walker at vertex \\(j\\) that will move toward vertex \\(k\\)), more precisely, using an ancillary "coin flip" register.
 
 See next section for detail.
 
@@ -239,7 +239,7 @@ The graph \\(G=(V,E)\\), undirected & regular of degree \\(d\\).
 
 \\(n=\|V\|, m=\|E\|\\)
 
-\\(\forall u\in V, S(u)=\{v\in V: \{u,v\} \in E\}, B(u)=S(u) \cup \{u\}.\\)
+\\(\forall u\in V, S(u)={v\in V: {u,v} \in E}, B(u)=S(u) \cup {u}.\\)
 
 The "diffusion" operator in quantum walk:
 
