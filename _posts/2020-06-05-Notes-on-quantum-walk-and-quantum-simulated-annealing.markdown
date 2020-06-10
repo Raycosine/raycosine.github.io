@@ -204,8 +204,8 @@ A single step of the quantum walk:
 At least by now I can't see any difference between this section and \[96\]...
 
 In the first paragraph, \\(P_{jk}\\) should be \\(P_{kj}\\) instead.
-)
-A single step of the quantum walk: \\(U:= S(2\Pi-1)\\), where \\(\Pi\\) is the projection onto \\(span\{\|\psi_j\rangle\}\\) and \\(S\\) is the swap operator (see [the following paper-reading section](#quantum-simulations-of-classical-random-walks-and-undirected-graph-connectivity)).
+
+A single step of the quantum walk: \\(U:= S(2\Pi-1)\\), where \\(\Pi\\) is the projection onto span{\\(\|\psi_j\rangle\\)} and \\(S\\) is the swap operator (see [the following paper-reading section](#quantum-simulations-of-classical-random-walks-and-undirected-graph-connectivity)).
 
 ### 17.3 Spectrum of the quantum walk
 
@@ -217,9 +217,9 @@ Define:
 
 \\(\|\tilde{\lambda}\rangle\\): \\(T\|\lambda\rangle\\). 
 
-\\(TT^\dag, T\dag T, T\dag ST\\) are equal to \\(\Pi, I, D\\) respectively.
+\\(TT^\dagger, T\dagger T, T\dagger ST\\) are equal to \\(\Pi, I, D\\) respectively.
 
-Then we can notice that some of \\(U\\)'s eigenvectors lie within \\(span\{\|\tilde{\lambda}\rangle, S\|\tilde{\lambda}\rangle\}\\).
+Then we can notice that some of \\(U\\)'s eigenvectors lie within span{\\(\|\tilde{\lambda}\rangle, S\|\tilde{\lambda}\rangle\\)}.
 
 ### 17.4 Hitting times
 
@@ -235,7 +235,7 @@ This paper was cited as \[96\] in [17.1](#171-discrete-time-quantum-walk) of Chi
 
 Definitions (copied from the original source):
 
-The graph \\(G=(V,E)\\), undirected \& regular of degree \\(d\\).
+The graph \\(G=(V,E)\\), undirected & regular of degree \\(d\\).
 
 \\(n=\|V\|, m=\|E\|\\)
 
@@ -253,7 +253,7 @@ The "diffusion" operator in quantum walk:
 
 In [17.1](#171-discrete-time-quantum-walk), only \\(\{v:v\in S_u\}\\) are considered, and \\(F\\) is defined as 
 
-\\(C:=\sum_{j\in V} \|j\rangle\langle j\| \otimes (2\|\partial j\rangle\langle \partial j\|-I)\\), where \\(\|j\rangle \otimes |\partial j\rangle\\) is the analog of \\(\|\psi_u\rangle\\).
+\\(C:=\sum_{j\in V} \|j\rangle\langle j\| \otimes (2\|\partial j\rangle\langle \partial j\|-I)\\), where \\(\|j\rangle \otimes \|\partial j\rangle\\) is the analog of \\(\|\psi_u\rangle\\).
 
 Also, we need swap operator \\(X=\sum_{u,v\in V} \|v,u\rangle\langle u,v\rangle \\) and projection \\(P=\sum_{u\in V} \|u,u\rangle\langle u,u\|\\).
 
