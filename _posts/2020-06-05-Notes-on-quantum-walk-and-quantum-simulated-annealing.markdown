@@ -217,7 +217,7 @@ Define:
 
 \\(\|\tilde{\lambda}\rangle\\): \\(T\|\lambda\rangle\\). 
 
-\\(TT^\dagger, T\dagger T, T\dagger ST\\) are equal to \\(\Pi, I, D\\) respectively.
+\\(TT^\dagger, T^\dagger T, T^\dagger ST\\) are equal to \\(\Pi, I, D\\) respectively.
 
 Then we can notice that some of \\(U\\)'s eigenvectors lie within span{\\(\|\tilde{\lambda}\rangle, S\|\tilde{\lambda}\rangle\\)}.
 
@@ -255,6 +255,6 @@ In [17.1](#171-discrete-time-quantum-walk), only \\(\{v:v\in S_u\}\\) are consid
 
 \\(C:=\sum_{j\in V} \|j\rangle\langle j\| \otimes (2\|\partial j\rangle\langle \partial j\|-I)\\), where \\(\|j\rangle \otimes \|\partial j\rangle\\) is the analog of \\(\|\psi_u\rangle\\).
 
-Also, we need swap operator \\(X=\sum_{u,v\in V} \|v,u\rangle\langle u,v\rangle \\) and projection \\(P=\sum_{u\in V} \|u,u\rangle\langle u,u\|\\).
+Also, we need swap operator \\(X=\sum_{u,v\in V} \|v,u\rangle\langle u,v\| \\) and projection \\(P=\sum_{u\in V} \|u,u\rangle\langle u,u\|\\).
 
 Then a single step of quantum walk is \\(Q=PFXFP\\). See lemma 3 for the proof that after a large number of steps starting from \\(u\\), the distribution would be close to the uniform distribution on \\(S(u)\\).
