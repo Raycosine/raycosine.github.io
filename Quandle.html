@@ -159,6 +159,9 @@
 
             var anywhere=document.getElementById("anywhere");
             anywhere.innerText="";
+
+            var cheerarea=document.getElementById("reveal_area");
+                    cheerarea.innerHTML='<button id="reveal" onclick="reveal()">reveal</button>';
         }
 
         function myFunction1(e) {
@@ -305,16 +308,22 @@
             if(document.getElementById('copy_content')!=null){
                 document.getElementById('copy_content').remove();
             }
-            let copy_area=document.createElement('div');
+            let copy_cont=document.createElement('div');
             var result=document.getElementById("result");
-            copy_area.innerText=result.innerText+'\n'+res_history;
+            let cont_str=res_history;
+            cont_str=result.innerText+'\n'+cont_str;
+            console.log(cont_str);
             var cheerarea=document.getElementById("reveal_area");
             if(cheerarea.innerText!='reveal'){
-            copy_area.innerText+='You find the words in '+res_history.split('\n').length.toString()+' attempts!\n';
+                cont_str=cont_str+'You find the words in '+(res_history.split('\n').length-1).toString()+' attempts!\n';
+            console.log(cont_str);
+            console.log(res_history);
             }
-            copy_area.setAttribute('style','position:absolute;left:-99999;');
-            copy_area.setAttribute('id','copy_content')
-            document.body.appendChild(copy_area);
+            
+            copy_cont.innerText=cont_str;
+            copy_cont.setAttribute('style','position:absolute;left:-99999;display:block');
+            copy_cont.setAttribute('id','copy_content')
+            document.body.appendChild(copy_cont);
             var clip = function(el) {
             var range = document.createRange();
             range.selectNodeContents(el);
@@ -322,7 +331,7 @@
             sel.removeAllRanges();
             sel.addRange(range);document.execCommand('copy');sel.removeRange(range);
             };
-            clip(copy_area);
+            clip(copy_cont);
             alert('Copied to clipboard ☕');
         }
     </script>
