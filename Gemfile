@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 gem 'github-pages'
 
-
+gem "activesupport"
 gem "kramdown", "~> 2.3.1"
 # Hello! This is where you manage which Jekyll version is used to run.
 # When you want to use a different version, change it below, save the
