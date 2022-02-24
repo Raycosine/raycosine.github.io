@@ -136,7 +136,8 @@
             
             guess1.placeholder=wordlist[getRandomInt(wordlist.length)];
             guess2.placeholder=wordlist[getRandomInt(wordlist.length)];
-            var description=document.getElementById('des').firstChild;
+            let description=document.getElementById('des').firstElementChild;
+            console.log(description);
             description.innerText="There are many copies of a quantum word state |w>=(|w_1>+...+|w_"+word_cnt.toString()+">)/sqrt("+word_cnt.toString()+"). Each word has "+word_length.toString()+" letters. You can pick any word to measure this state. Can you find the classical description of w?";
             var rec=document.getElementById("history");
             rec.innerText="";
