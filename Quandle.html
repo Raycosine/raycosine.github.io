@@ -1,6 +1,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <style>
         *, *:before, *:after{box-sizing: border-box;}
         html{
@@ -101,22 +102,55 @@
         }
         var guess_res={};
         var res_history="";
-        function init(){
+        var next_daily="";
+        function hash(x){
+            var tmp=x;
+            var hash=0;
+            while(tmp>0){
+                hash=((hash<<5)-hash)+tmp%13;
+                hash=hash&hash;
+                tmp=((tmp/13)>>0);
+            }
+            return hash;
+        }
+        function init(daily){
+            if(daily){
+                word_length=5;
+                word_cnt=2;
+            }
             if(word_length==5)
                 wordlist=wordlist5;
             else if(word_length==4)
                 wordlist=wordlist4;
             else wordlist=wordlist3;
             w=[];
+            var date_raw=Date.now()/(1000*60*60*24);
+            var date=Math.floor(date_raw);
+
             for(i=0;i<word_cnt;i++){
-                w.push(wordlist[getRandomInt(wordlist.length)]);
+                if(daily){
+                    w.push(wordlist[hash(date*(i+1))%wordlist.length]);
+                }
+                else{
+                    w.push(wordlist[getRandomInt(wordlist.length)]);
+                }
+                
             }
             guess_res={};
             res_history="";
+            if(daily)
+                return 1-date_raw+date;
+            else   
+                return -1;
         }
-        init();
-        function refreshpage(){
-            init();
+        init(false);
+        function refreshpage(daily){
+            var daily_info=init(daily);
+            if(daily){
+                next_daily=(Math.floor(daily_info*24)).toString();
+            }else{
+                next_daily="";
+            }
             var row=document.getElementsByClassName('row')[0];
             if(row==undefined){
                 return;
@@ -272,6 +306,9 @@
                     let cheers=document.createElement('div');
                     let cheerscont=document.createElement('div');
                     cheerscont.innerText="You win the game!";
+                    if(next_daily!=""){
+                        cheerscont.innerText+=" Next Daily in "+next_daily+" hours";
+                    }
                     cheers.appendChild(cheerscont);
                     var cheerarea=document.getElementById("reveal_area");
                     cheerarea.innerHTML="";
@@ -291,16 +328,23 @@
                         result.innerText+="+";
                     result.innerText+="|"+w[i]+">";
                 }
+            if(next_daily!=""){
+                    result.innerText+=" Next Daily in "+next_daily+" hours";
+                }
             var guess_area=document.getElementById('guess_area');
             guess_area.innerHTML="";
         }
 
-        function reset(){
+        function reset(daily){
             var wlen=document.getElementById("wordlength");
             var wcnt=document.getElementById("wordcnt");
             word_length=wlen.value;
             word_cnt=wcnt.value;
-            refreshpage();
+            
+            var guess_area=document.getElementById('guess_area');
+            guess_area.innerHTML='<label>Make a guess:</label><input id="guess2" maxlength=5 minlength=5 placeholder="weary" style="margin:auto;"><button onclick="myFunction2(0)">submit</button>';
+
+            refreshpage(daily);
         }
 
 
@@ -342,7 +386,7 @@
     
     <div id="des" style="position:absolute;top:0;margin:0%;min-width:80%;min-height:80%;background-color: rgb(180, 219, 206);justify-content: center;display:flex;flex-direction:column; align-items: flex-start; text-align:left; align-content:space-between;">
         <p style="top:0;left:0;right:0;padding:2%">There are many copies of a quantum word state |w>=(|w_1>+|w_2>)/sqrt(2). Each word has 5 letters. You can pick any word to measure this state. The outcomes are usually 0 and 1, but sometimes you learn something extra — because it's not really quantum! Can you find the classical description of w?"</p>
-        <div id="sidebar" style="margin:auto;flex-direction: column;display: flex;margin:auto;justify-content: space-between;align-items: flex-start;">
+        <div id="sidebar" style="width:80%;margin:auto;flex-direction: column;display: flex;margin:auto;justify-content: space-between;align-items: flex-start;">
             <div style="align-content:space-between;margin-right: 25px;">
                 <label>Word length</label>
                 <input id="wordlength" style="width:50px" type="range" min="3" max="5" value="5" oninput="this.nextElementSibling.value = this.value">
@@ -353,13 +397,19 @@
                 <input id="wordcnt" style="width:50px" type="range" min="2" max="5" value="2" oninput="this.nextElementSibling.value = this.value">
                 <output>2</output>
             </div>
-            <button onclick="reset()" style="width:100%;">Reset</button>
+            <button onclick="reset(false)" style="width:100%;">Practice</button>
+        </div>
+        <div id="sidebar" style="width:80%;margin:auto;flex-direction: column;display: flex;margin:auto;justify-content: space-between;align-items: flex-start;"> 
+            <button onclick="reset(true)" style="width:100%">Daily (two 5 letter words)</button>
+        </div>
+        <div id="sidebar" style="width:80%;margin:auto;flex-direction: column;display: flex;margin:auto;justify-content: space-between;align-items: flex-start;"> 
             <button onclick="document.getElementById('des').style.display='none';" style="width:100%;">x</button>
         </div>
         <div>
         <p style="top:0;left:0;right:0;padding:2%;">🟩 means you get 1 in this spot, so the letter is definitely in the correct spot for at least one of the words.</p>
         <p style="top:0;left:0;right:0;padding:2%;">🟨 means you get 0 in this spot. But to make it similar to the classical version, you are told that the letter must be in other spots, but it can happen if the letter is also in this spot!</p>
             <p style="top:0;left:0;right:0;padding:2%;">⬜ means you get 0 in this spot and nothing informative. Just one more try!</p>
+            
         </div>
     </div>
 
