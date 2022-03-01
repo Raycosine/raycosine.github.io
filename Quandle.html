@@ -1,8 +1,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114914817-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
+    gtag('config', 'UA-114914817-1');
+    </script>
     <style>
+        @font-face{
+            font-family: 'px1';
+            src: url('Extrude.ttf') format('truetype');
+        }
+        @font-face{
+            font-family: 'px2';
+            src: url('HelvetiPixel.ttf') format('truetype');
+        }
         *, *:before, *:after{box-sizing: border-box;}
         html{
             width:100%;
@@ -11,25 +27,34 @@
             width: 100%; /*
             font-size:16px;
             font-size:3.75vw;*/
-            font-family: Verdana,sans-serif;
+            font-size:1.5em;
+            font-family: px2, Verdana,sans-serif;
             text-size-adjust: auto;
             display: flex;
             align-items: center;
             align-content:space-between;
+            cursor: crosshair;
         }
         button{
-            border-radius: 0em;
-            border-style: solid;
-            border-width: 1px;
-            background-color: rgba(180, 219, 206, 0);
-            line-height: 2em;
-            line-height: 3.75vw;
+            margin: 12px;
+            background-color: rgba(137, 151, 146, 0.541);
+            line-height: 1em;
+            font-size:  1em;
+            font-family: px1;
+            text-size-adjust: auto;
+            color: black;
+            cursor:cell;
+            text-transform: uppercase;
+            box-shadow: 8px 8px 0px rgba(255,255,255,0.541), -8px -8px 0px rgba(255,255,255,0.541);
         }
         input{
-            line-height: 2em;
-            line-height: 3.75vw;
+            line-height: 1em;
+            font-size:  1em;
             border-radius: 0em;
             text-align: center;
+            font-family: px2;
+            width:4.5em;
+            text-transform: uppercase;
         }
         .bg {
             display:flex;
@@ -39,6 +64,7 @@
             top:0;
             bottom:0;
             width: 100%;
+            height:100%;
             margin: auto;
             position:absolute;
             align-items: baseline;
@@ -75,6 +101,7 @@
             border-width: 0;
             border-style: solid;
             border-color: #e5e7eb;
+            text-transform: lowercase;
         }
     </style>
     <script>
@@ -172,7 +199,7 @@
             guess2.placeholder=wordlist[getRandomInt(wordlist.length)];
             let description=document.getElementById('des').firstElementChild;
             console.log(description);
-            description.innerText="There are many copies of a quantum word state |w>=(|w_1>+...+|w_"+word_cnt.toString()+">)/sqrt("+word_cnt.toString()+"). Each word has "+word_length.toString()+" letters. You can pick any word to measure this state. Can you find the classical description of w?";
+            description.innerText="There are many copies of a quantum word state |w>=(|w_1>+...+|w_"+word_cnt.toString()+">)/sqrt("+word_cnt.toString()+"). Each word has "+word_length.toString()+" letters. You can pick any single word to measure this state. Can you find the classical description of w?";
             var rec=document.getElementById("history");
             rec.innerText="";
             
@@ -202,6 +229,7 @@
             if((e && e.keyCode == 13) || e == 0) {
                 var newguess=document.getElementById("guess1");
                 var word=newguess.value;
+                word=word.toLowerCase();
                 if(word.length!=word_length){
                     alert("Wrong word length!");
                     return;
@@ -231,18 +259,25 @@
                     if(c[i]==1){
                         ans+="🟩";
                         var cell=document.getElementById(i.toString());
-                        if(cell.innerText.includes(word[i])==false){
-                            cell.innerText+=word[i];
-                            cell.innerText=sortString(cell.innerText);
+                        var tmp=cell.innerText;
+                        if(tmp.includes(word[i])==false){
+                            tmp.innerText+=word[i];
+                            tmp.innerText=sortString(tmp);
+                            cell.innerText=tmp;
                         }
                     }
                     else{
                         if((c[i]==0) && c.includes(1)){
                             ans+="🟨";
                             var cell=document.getElementById("anywhere"); 
-                            if(cell.innerText.includes(word[i])==false){
-                                cell.innerText+=word[i];
-                                cell.innerText=sortString(cell.innerText);
+                            var tmp=cell.innerText;
+                            console.log(tmp);
+                            console.log(word[i]);
+                            console.log(i);
+                            if(tmp.includes(word[i])==false){
+                                tmp+=word[i];
+                                tmp=sortString(tmp);
+                                cell.innerText=tmp;
                             }
                         }
                         else{
@@ -262,6 +297,7 @@
             if((e && e.keyCode == 13) || e == 0) {
                 var newguess=document.getElementById("guess2");
                 var word=newguess.value;
+                word=word.toLowerCase();
                 if(word.length!=word_length){
                     alert("Wrong word length!");
                     newguess.value="";
@@ -384,26 +420,27 @@
 <body>
   <div class="bg" id="bg">
     
-    <div id="des" style="position:absolute;top:0;margin:0%;min-width:80%;min-height:80%;background-color: rgb(180, 219, 206);justify-content: center;display:flex;flex-direction:column; align-items: flex-start; text-align:left; align-content:space-between;">
-        <p style="top:0;left:0;right:0;padding:2%">There are many copies of a quantum word state |w>=(|w_1>+|w_2>)/sqrt(2). Each word has 5 letters. You can pick any word to measure this state. The outcomes are usually 0 and 1, but sometimes you learn something extra — because it's not really quantum! Can you find the classical description of w?"</p>
-        <div id="sidebar" style="width:80%;margin:auto;flex-direction: column;display: flex;margin:auto;justify-content: space-between;align-items: flex-start;">
+    <div id="des" style="position:absolute;top:0;left:0;margin:0%;min-width:80%;min-height:80%;background-color: rgb(180, 219, 206);justify-content: center;display:flex;flex-direction:column; align-items: flex-start; text-align:left; align-content:space-between;">
+        <p style="top:0;left:0;right:0;padding:2%;margin:8px; background: rgba(255, 255, 255, 1);box-shadow: 4px 4px 0px rgba(255,255,255,0.541), -4px -4px 0px rgba(255,255,255,0.541);">There are many copies of a quantum word state |w>=(|w_1>+|w_2>)/sqrt(2). Each word has 5 letters. You can pick any word to measure this state. The outcomes are usually 0 and 1, but sometimes you learn something extra — because it's not really quantum! Can you find the classical description of w?"</p>
+        
+        <div id="sidebar" style="margin:auto;flex-direction: row;display: flex;margin:auto;justify-content: space-between;align-items: flex-start;"> 
+            <button onclick="document.getElementsByClassName('prac_op')[0].style.display='flex';" >Practice</button>
+            <button onclick="reset(true);document.getElementsByClassName('prac_op')[0].style.display='none';" >Daily (two 5 letter words)</button>
+        </div>
+        <div id="sidebar" class="prac_op" style="margin:auto;flex-direction: row;display: none;margin:auto;justify-content: space-between;align-items: flex-start;">
             <div style="align-content:space-between;margin-right: 25px;">
                 <label>Word length</label>
-                <input id="wordlength" style="width:50px" type="range" min="3" max="5" value="5" oninput="this.nextElementSibling.value = this.value">
+                <input id="wordlength" style="width:50px" type="range" min="3" max="5" value="5" oninput="this.nextElementSibling.value = this.value;reset(false);">
                 <output>5</output>
             </div>
             <div style="align-content:space-between;">
                 <label>Number of words</label>
-                <input id="wordcnt" style="width:50px" type="range" min="2" max="5" value="2" oninput="this.nextElementSibling.value = this.value">
+                <input id="wordcnt" style="width:50px" type="range" min="2" max="5" value="2" oninput="this.nextElementSibling.value = this.value;reset(false);">
                 <output>2</output>
             </div>
-            <button onclick="reset(false)" style="width:100%;">Practice</button>
         </div>
-        <div id="sidebar" style="width:80%;margin:auto;flex-direction: column;display: flex;margin:auto;justify-content: space-between;align-items: flex-start;"> 
-            <button onclick="reset(true)" style="width:100%">Daily (two 5 letter words)</button>
-        </div>
-        <div id="sidebar" style="width:80%;margin:auto;flex-direction: column;display: flex;margin:auto;justify-content: space-between;align-items: flex-start;"> 
-            <button onclick="document.getElementById('des').style.display='none';" style="width:100%;">x</button>
+        <div id="sidebar" style="margin:auto;flex-direction: column;display: flex;margin:auto;justify-content: space-between;align-items: flex-start;"> 
+            <button onclick="document.getElementById('des').style.display='none';">Start</button>
         </div>
         <div>
         <p style="top:0;left:0;right:0;padding:0 2% 0 2%;">🟩 means you get 1 in this spot, so the letter is definitely in the correct spot for at least one of the words.</p>
