@@ -85,6 +85,10 @@
             font-family: 'px2';
             src: url('HelvetiPixel.ttf') format('truetype');
         }
+        .username, .comment-url{
+            text-decoration: none;
+            color:#05d9e8;
+        }
         img.avatar {
             width: 20px;
             aspect-ratio: auto 20 / 20;
@@ -114,18 +118,38 @@
             align-items: center;
             align-content:space-between;
             cursor: crosshair;
+            background-color: #01012b;
         }
-        button{
+        button:hover{
             margin: 12px;
+            border:none;
             background-color: rgba(137, 151, 146, 0.541);
             line-height: 1em;
             font-size:  1em;
             font-family: px1;
             text-size-adjust: auto;
-            color: black;
+            color: #d1f7ff;
             cursor:cell;
             text-transform: uppercase;
-            box-shadow: 8px 8px 0px rgba(255,255,255,0.541), -8px -8px 0px rgba(255,255,255,0.541);
+            box-shadow: 8px 8px 0px #ff2a6d, -8px -8px 0px #ff2a6e73;
+            transition: all 0.6s cubic-bezier(0.55, 0, 0.1, 1);
+        }
+        button{
+            margin: 12px;
+            border:none;
+            background-color: rgba(137, 151, 146, 0.541);
+            line-height: 1em;
+            font-size:  1em;
+            font-family: px1;
+            text-size-adjust: auto;
+            color: #d1f7ff;
+            cursor:cell;
+            text-transform: uppercase;
+            box-shadow: 2px 2px 0px #ff2a6d, -2px -2px 0px #ff2a6e73;
+        }
+        button:active{
+            background-color: #d1f7ff;
+            color:rgba(137, 151, 146, 0.541);
         }
         input{
             line-height: 1em;
@@ -133,7 +157,7 @@
             border-radius: 0em;
             text-align: center;
             font-family: px2;
-            width:4.5em;
+            width:3.5em;
             text-transform: uppercase;
         }
         .bg {
@@ -149,6 +173,8 @@
             position:absolute;
             align-items: baseline;
             align-content:space-between;
+            background-color: #01012b;
+            color: #05d9e8;
         }
         .board {
             display: grid;
@@ -174,9 +200,9 @@
             text-align: center;
             justify-content: center;
             height: 30px;
-            background-color: rgb(167, 167, 167);
+            color:#d1f7ff;
+            background-color: #ff2a6e;
             display:inline-block;
-            border-radius: 0.25rem;
             box-sizing: border-box;
             border-width: 0;
             border-style: solid;
@@ -500,8 +526,8 @@
 <body>
   <div class="bg" id="bg">
     
-    <div id="des" style="position:absolute;top:0;left:0;margin:0%;min-width:80%;min-height:80%;background-color: rgb(180, 219, 206);justify-content: center;display:flex;flex-direction:column; align-items: flex-start; text-align:left; align-content:space-between;">
-        <p style="top:0;left:0;right:0;padding:2%;margin:8px; background: rgba(255, 255, 255, 1);box-shadow: 4px 4px 0px rgba(255,255,255,0.541), -4px -4px 0px rgba(255,255,255,0.541);">There are many copies of a quantum word state |w>=(|w_1>+|w_2>)/sqrt(2). Each word has 5 letters. You can pick any word to measure this state. The outcomes are usually 0 and 1, but sometimes you learn something extra — because it's not really quantum! Can you find the classical description of w?"</p>
+    <div id="des" style="position:absolute;top:0;left:0;margin:0%;min-width:80%;min-height:80%;background-color: #005678;color:#d1f7ff;justify-content: center;display:flex;flex-direction:column; align-items: flex-start; text-align:left; align-content:space-between;">
+        <p style="top:0;left:0;right:0;padding:2%;margin:8px;color:#005678; background:#d1f7ff;box-shadow: 4px 4px 0px #05d9e8, -4px -4px 0px #05d9e873;">There are many copies of a quantum word state |w>=(|w_1>+|w_2>)/sqrt(2). Each word has 5 letters. You can pick any word to measure this state. The outcomes are usually 0 and 1, but sometimes you learn something extra — because it's not really quantum! Can you find the classical description of w?"</p>
         
         <div id="sidebar" style="margin:auto;flex-direction: row;display: flex;margin:auto;justify-content: space-between;align-items: flex-start;"> 
             <button onclick="document.getElementsByClassName('prac_op')[0].style.display='flex';" >Practice</button>
