@@ -10,6 +10,72 @@
 
     gtag('config', 'UA-114914817-1');
     </script>
+    <script>
+        const GH_API_URL = 'https://api.github.com/repos/raycosine/raycosine.github.io/issues/4/comments?per_page=100';
+        
+        let request = new XMLHttpRequest();
+        request.open( 'GET', GH_API_URL, true );
+        request.onload = function() {
+            if ( this.status >= 200 && this.status < 400 ) {
+                let response = JSON.parse( this.response );
+        
+                for ( var i = 0; i < response.length; i++ ) {
+                    document.getElementById( 'gh-comments-list' ).appendChild( createCommentEl( response[ i ] ) );
+                }
+        
+                if ( 0 === response.length ) {
+                    document.getElementById( 'no-comments-found' ).style.display = 'block';
+                }
+                else{
+                    document.getElementById( 'no-comments-found' ).style.display = 'none';
+                }
+            } else {
+                console.error( this );
+            }
+        };
+        
+        function createCommentEl( response ) {
+            let user = document.createElement( 'a' );
+            user.setAttribute( 'href', response.user.url.replace( 'api.github.com/users', 'github.com' ) );
+            user.classList.add( 'user' );
+        
+            let userAvatar = document.createElement( 'img' );
+            userAvatar.classList.add( 'avatar' );
+            userAvatar.setAttribute( 'src', response.user.avatar_url );
+        
+            user.appendChild( userAvatar );
+        
+            let userName = document.createElement( 'a');
+            userName.classList.add( 'userName');
+            userName.innerHTML = response.user.login;
+        
+            user.appendChild( userName);
+        
+            user.setAttribute('style','display: inline-block;flex-direction: row;');
+        
+            let commentLink = document.createElement( 'a' );
+            commentLink.setAttribute( 'href', response.html_url );
+            commentLink.classList.add( 'comment-url' );
+            commentLink.innerHTML = '#' + response.id + ' - ' + response.created_at;
+            commentLink.setAttribute('style', 'font-size:8px');
+        
+            let commentContents = document.createElement( 'div' );
+            commentContents.classList.add( 'comment-content' );
+            commentContents.innerHTML = response.body;
+            commentContents.setAttribute('style', 'margin-left:20;')
+        
+            let comment = document.createElement( 'li' );
+            comment.setAttribute( 'data-created', response.created_at );
+            comment.setAttribute( 'data-author-avatar', response.user.avatar_url );
+            comment.setAttribute( 'data-user-url', response.user.url );
+        
+            comment.appendChild( user );
+            comment.appendChild( commentContents );
+            comment.appendChild( commentLink );
+            return comment;
+        }
+        request.send();
+        </script>
     <style>
         @font-face{
             font-family: 'px1';
@@ -19,6 +85,20 @@
             font-family: 'px2';
             src: url('HelvetiPixel.ttf') format('truetype');
         }
+        img.avatar {
+            width: 20px;
+            aspect-ratio: auto 20 / 20;
+            height: 20px;
+            display: inline-block;
+            overflow: hidden;
+            line-height: 1;
+            vertical-align: text-bottom;
+            background-color: var(--color-avatar-bg);
+            border-radius: 6px;
+            flex-shrink: 0;
+            box-shadow: 0 0 0 1px var(--color-avatar-border);
+            border-radius: 50% !important;
+            }
         *, *:before, *:after{box-sizing: border-box;}
         html{
             width:100%;
@@ -494,6 +574,13 @@
             <button id="copy" onclick="copy()">share</button>
         </div>
     </div>
+    <div>
+        <h2>Comments</h2>
+        <ul id="gh-comments-list"></ul>
+        <ul id="no-comments-found">No comments found.</ul>
+        <ul id="leave-a-comment">Leave a comment <a href="https://github.com/raycosine/raycosine.github.io/issues/4">here</a>.</ul>
+    </div>
+
     </div>
     
 </body>
