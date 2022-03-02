@@ -131,7 +131,7 @@
             color: #d1f7ff;
             cursor:cell;
             text-transform: uppercase;
-            box-shadow: 8px 8px 0px #ff2a6d, -8px -8px 0px #ff2a6e73;
+            box-shadow: 8px 8px 0px #ff2a6e, -8px -8px 0px #ff2a6e73;
             transition: all 0.6s cubic-bezier(0.55, 0, 0.1, 1);
         }
         button{
@@ -145,7 +145,7 @@
             color: #d1f7ff;
             cursor:cell;
             text-transform: uppercase;
-            box-shadow: 2px 2px 0px #ff2a6d, -2px -2px 0px #ff2a6e73;
+            box-shadow: 2px 2px 0px #ff2a6e, -2px -2px 0px #ff2a6e73;
         }
         button:active{
             background-color: #d1f7ff;
@@ -159,6 +159,89 @@
             font-family: px2;
             width:3.5em;
             text-transform: uppercase;
+            cursor:cell;
+        }
+        input[type="range"]{
+            -webkit-appearance: none;
+            background: transparent;
+            cursor:cell;
+            color: -internal-light-dark(#ff2a6e, #d1f7ff);
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            
+            height:0.6em;
+            width:0.4em;
+            border-radius: 0em;
+            border-style: none;
+            background: #ff2a6e;
+            cursor: cell;
+            margin-top: -0.2em;
+            box-shadow: 0.1em 0.1em 0 #05d9e8, -0.1em -0.1em 0px #0d0d0d;
+        }
+        input[type=range]::-moz-range-thumb {
+            -webkit-appearance: none;
+            
+            height:0.6em;
+            width:0.4em;
+            border-radius: 0px;
+            border-style: none;
+            background: #ff2a6e;
+            cursor: cell;
+            margin-top: -0.2em;
+            box-shadow: 1px 1px 1px #05d9e8, 0px 0px 1px #0d0d0d;
+        }
+        input[type=range]::-ms-thumb {
+            -webkit-appearance: none;
+            
+            height:0.6em;
+            width:0.4em;
+            border-radius: 0px;
+            border-style: none;
+            background: #ff2a6e;
+            cursor: cell;
+            margin-top: -0.2em;
+            box-shadow: 1px 1px 1px #05d9e8, 0px 0px 1px #0d0d0d;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 0.4em;
+            cursor: pointer;
+            box-shadow: 1px 1px 0px #d1f7ff, -1px -1px 0px #0d0d0d;
+            background: #ff2a6e;
+            border: none;
+        }
+        input[type=range]:focus::-webkit-slider-runnable-track {
+            background: #0d0d0d;
+            cursor:cell;
+        }
+        input[type=range]:focus {
+            outline: none; 
+        }
+        .title {
+            margin:2%;
+            left:50%;
+            font-size:  2em;
+            font-family: px1;
+            color:#d1f7ff;
+        }
+        .title:hover span {
+            display:none
+        }
+        .title:hover:before{
+            content:  "Quantum";
+            animation: distort 3000ms linear infinite;
+        }
+        @keyframes distort {
+            0%    { content: "Quantum";color:#ff2a6e; text-shadow: 4px 4px 0px #ff2a6e;}
+            12.5% { content: "Quandle";color:#d1f7ff; text-shadow: -4px -4px 0px #05d9e8;}
+            25%   { content: "Quantum";color:#ff2a6e; text-shadow: 4px 4px 0px #ff2a6e;}
+            37.5% { content: "Quandle";color:#d1f7ff; text-shadow: -4px -4px 0px #05d9e8; }
+            50%   { content: "W?ordle";color:#ff2a6e; text-shadow: 4px 4px 0px #ff2a6e;}
+            62.5% { content: "Quandle";color:#d1f7ff; text-shadow: -4px -4px 0px #05d9e8; }
+            75%   { content: "Quantum";color:#ff2a6e; text-shadow: 4px 4px 0px #ff2a6e;}
+            87.5% { content: "Quandle";color:#d1f7ff; text-shadow: -4px -4px 0px #05d9e8; }
+            100%  { content: "Quantum";color:#ff2a6e; text-shadow: 4px 4px 0px #ff2a6e;}
         }
         .bg {
             display:flex;
@@ -303,7 +386,7 @@
             
             guess1.placeholder=wordlist[getRandomInt(wordlist.length)];
             guess2.placeholder=wordlist[getRandomInt(wordlist.length)];
-            let description=document.getElementById('des').firstElementChild;
+            let description=document.getElementById('des').children[1];
             console.log(description);
             description.innerText="There are many copies of a quantum word state |w>=(|w_1>+...+|w_"+word_cnt.toString()+">)/sqrt("+word_cnt.toString()+"). Each word has "+word_length.toString()+" letters. You can pick any single word to measure this state. Can you find the classical description of w?";
             var rec=document.getElementById("history");
@@ -478,7 +561,7 @@
         }
 
         function reset(daily){
-            var wlen=document.getElementById("wordlength");
+            var wlen=document.getElementById("Quandlength");
             var wcnt=document.getElementById("wordcnt");
             word_length=wlen.value;
             word_cnt=wcnt.value;
@@ -526,25 +609,31 @@
 <body>
   <div class="bg" id="bg">
     
-    <div id="des" style="position:absolute;top:0;left:0;margin:0%;min-width:80%;min-height:80%;background-color: #005678;color:#d1f7ff;justify-content: center;display:flex;flex-direction:column; align-items: flex-start; text-align:left; align-content:space-between;">
-        <p style="top:0;left:0;right:0;padding:2%;margin:8px;color:#005678; background:#d1f7ff;box-shadow: 4px 4px 0px #05d9e8, -4px -4px 0px #05d9e873;">There are many copies of a quantum word state |w>=(|w_1>+|w_2>)/sqrt(2). Each word has 5 letters. You can pick any word to measure this state. The outcomes are usually 0 and 1, but sometimes you learn something extra — because it's not really quantum! Can you find the classical description of w?"</p>
+    <div id="des" style="position:absolute;top:0;left:0;bottom:0;margin:0%;min-width:80%;min-height:80%;background-color: #005678;color:#d1f7ff;justify-content: center;display:flex;flex-direction:column; align-items: center; text-align:left; align-content:space-between;">
+        <div class="title">
+            <span>Quandle</span>
+        </div>
+        <p style="top:0;left:0;right:0;padding:2%;margin:8px;color:#005678; background:#d1f7ff;box-shadow: 4px 4px 0px #05d9e8, -4px -4px 0px #05d9e873;font-family:px2;">There are many copies of a quantum word state |w>=(|w_1>+|w_2>)/sqrt(2). Each word has 5 letters. You can pick any word to measure this state. The outcomes are usually 0 and 1, but sometimes you learn something extra — because it's not really quantum! Can you find the classical description of w?"</p>
         
         <div id="sidebar" style="margin:auto;flex-direction: row;display: flex;margin:auto;justify-content: space-between;align-items: flex-start;"> 
-            <button onclick="document.getElementsByClassName('prac_op')[0].style.display='flex';" >Practice</button>
+            <div style="display:flex;flex-direction:row;margin:auto;justify-content: left; align-items: flex-start;">
+                <button onclick="document.getElementsByClassName('prac_op')[0].style.display='flex';" >Practice</button>
+                <div id="sidebar" class="prac_op" style="margin:auto;flex-direction: column;display: none;margin:auto;justify-content: space-between;align-items: flex-start;">
+                    <div style="align-content:space-between;margin-right: 25px;">
+                        <label>Word length</label>
+                        <input id="Quandlength" style="width:50px" type="range" min="3" max="5" value="5" oninput="this.nextElementSibling.value = this.value;reset(false);">
+                        <output>5</output>
+                    </div>
+                    <div style="align-content:space-between;">
+                        <label>Number of words</label>
+                        <input id="wordcnt" style="width:50px" type="range" min="2" max="5" value="2" oninput="this.nextElementSibling.value = this.value;reset(false);">
+                        <output>2</output>
+                    </div>
+                </div>
+            </div>
             <button onclick="reset(true);document.getElementsByClassName('prac_op')[0].style.display='none';" >Daily (two 5 letter words)</button>
         </div>
-        <div id="sidebar" class="prac_op" style="margin:auto;flex-direction: row;display: none;margin:auto;justify-content: space-between;align-items: flex-start;">
-            <div style="align-content:space-between;margin-right: 25px;">
-                <label>Word length</label>
-                <input id="wordlength" style="width:50px" type="range" min="3" max="5" value="5" oninput="this.nextElementSibling.value = this.value;reset(false);">
-                <output>5</output>
-            </div>
-            <div style="align-content:space-between;">
-                <label>Number of words</label>
-                <input id="wordcnt" style="width:50px" type="range" min="2" max="5" value="2" oninput="this.nextElementSibling.value = this.value;reset(false);">
-                <output>2</output>
-            </div>
-        </div>
+
         <div id="sidebar" style="margin:auto;flex-direction: column;display: flex;margin:auto;justify-content: space-between;align-items: flex-start;"> 
             <button onclick="document.getElementById('des').style.display='none';">Start</button>
         </div>
@@ -553,6 +642,7 @@
         <p style="top:0;left:0;right:0;padding:0 2% 0 2%;">🟨 means you get 0 in this spot. But to make it similar to the classical version, you are told that the letter must be in other spots, but it can happen if the letter is also in this spot!</p>
             <p style="top:0;left:0;right:0;padding:0 2% 0 2%;">⬜ means you get 0 in this spot and nothing informative. Just one more try!</p>
             <p style="top:0;left:0;right:0;padding:0 2% 0 2%;"> Word list: SOWPODS</p>
+            <button onclick="document.getElementById('des').style.display='none';">CLOSE</button>
         </div>
     </div>
 
@@ -564,7 +654,7 @@
             <input id="guess1" autofocus=1 maxlength=5 minlength=5 placeholder="weary" style="margin:auto;">
             <button  onclick="myFunction1(0)">submit</button>
         
-            <button id="info" onclick="document.getElementById('des').style.display='';">⚙️&❓</button>
+            <button id="info" onclick="document.getElementById('des').style.display='flex';">⚙️&❓</button>
         </div>
     </div>
     <div class="board">
