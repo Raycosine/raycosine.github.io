@@ -450,8 +450,9 @@
                         var cell=document.getElementById(i.toString());
                         var tmp=cell.innerText;
                         if(tmp.includes(word[i])==false){
-                            tmp.innerText+=word[i];
-                            tmp.innerText=sortString(tmp);
+                            console.log(i);
+                            tmp+=word[i];
+                            tmp=sortString(tmp);
                             cell.innerText=tmp;
                         }
                     }
@@ -460,9 +461,6 @@
                             ans+="🟨";
                             var cell=document.getElementById("anywhere"); 
                             var tmp=cell.innerText;
-                            console.log(tmp);
-                            console.log(word[i]);
-                            console.log(i);
                             if(tmp.includes(word[i])==false){
                                 tmp+=word[i];
                                 tmp=sortString(tmp);
