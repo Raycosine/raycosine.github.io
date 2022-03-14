@@ -2200,12 +2200,15 @@ layout: default
   {% for post in site.posts %}
 	{% if post.categories contains "quantum" %}
 	{% else %}
+		{% if post.categories contains "wushu" %}
+		{% else %}
 	<li>
 	  <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
       <h3>
 		<a class="post-link" href="{{ post.url }}">{{ post.title }}</a>
 	  </h3>
     </li>
+		{% endif %}
 	{% endif %}
   {% endfor %}
   </ul>
