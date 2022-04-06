@@ -699,7 +699,8 @@
             
             var guess_area=document.getElementById('guess_area');
             guess_area.innerHTML='<label>Make a guess:</label><input id="guess2" maxlength=5 minlength=5 placeholder="weary" style="margin:auto;"><button onclick="myFunction2(0)">submit</button>';
-
+            var res_image=document.getElementById("res_image");
+            res_image.outerHTML='<canvas id="res_image" width="1" height="1"></canvas>';
             refreshpage(daily);
         }
 
@@ -821,7 +822,7 @@
         
         <div id="sidebar" style="margin:auto;flex-direction: row;display: flex;margin:auto;justify-content: space-between;align-items: flex-start;"> 
             <div style="display:flex;flex-direction:row;margin:auto;justify-content: left; align-items: flex-start;">
-                <button onclick="document.getElementsByClassName('prac_op')[0].style.display='flex';" >Practice</button>
+                <button onclick="document.getElementsByClassName('prac_op')[0].style.display='flex';reset(false);" >Practice</button>
                 <div id="sidebar" class="prac_op" style="margin:auto;flex-direction: column;display: none;margin:auto;justify-content: space-between;align-items: flex-start;">
                     <div style="align-content:space-between;margin-right: 25px;">
                         <label>Word length</label>
