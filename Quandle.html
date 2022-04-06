@@ -805,7 +805,7 @@
             ctx.font = '20px px1';
             ctx.fillText(img_str1, 0, 66);
             var img    = res_image.toDataURL("image/png");
-            res_image.outerHTML=('<img src="'+img+'"/>');
+            res_image.outerHTML=('<img id="res_image" src="'+img+'"/>');
             alert('Copied to clipboard ☕');
         }
     </script>
