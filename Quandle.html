@@ -712,7 +712,13 @@
             let copy_cont=document.createElement('div');
             var result=document.getElementById("result");
             let cont_str=res_history;
-            cont_str=result.innerText+'\n'+cont_str;
+            var temp_str="QUANDLE";
+            if(next_daily!=""){
+                temp_str+=" DAILY";
+            }else{
+                temp_str+=" PRACTICE";
+            }
+            cont_str=cont_str+'\n'+temp_str+'\n'+'https://raycosine.github.io/Quandle.html'+'\n';
             console.log(cont_str);
             var cheerarea=document.getElementById("reveal_area");
             if(cheerarea.innerText!='reveal'){
