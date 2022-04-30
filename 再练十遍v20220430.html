@@ -1457,6 +1457,7 @@ WASD
 * 增加手机适配（无法自动识别，需要手动调整），优化了一些html样式
 * 完成了主线（多结局）
 * 会变饿了！
+* 增加了天气
 * Trigger warning:存在掉san内容，设置处可选择关闭！ 
 ---
 2021.10
@@ -1891,6 +1892,7 @@ WASD
 (set: $yujian to false)
 (set: $jianyi_fellow to (a:))
 (set: $san to true)
+(set: $is_end to false)
 }</tw-passagedata><tw-passagedata pid="26" name="请教" tags="" position="956,255" size="100,100">	  	* (link-rerun: &quot;向&quot;+_sifu_name+&quot;请教武功&quot;)[{
 	  (for: each _kungfu, ...(datanames: _sifu_kungfu))[
 		** (link-rerun: &quot;向&quot;+_sifu_name+&quot;请教&quot;+_kungfu+&quot;（最高&quot;+(str: _kungfu of _sifu_kungfu)+&quot;级）&quot;)[
@@ -3332,7 +3334,7 @@ document.getElementsByName(&quot;sidebararea&quot;)[0].style.display=&quot;&quot
   (replace: ?sideBar)[\
   (display: &quot;sidebar_content&quot;)
   ]
-]}</tw-passagedata><tw-passagedata pid="63" name="sidebar_mobile_content" tags="" position="889,404" size="100,100">|sidebar_area&gt;[\
+]}</tw-passagedata><tw-passagedata pid="63" name="sidebar_mobile_content" tags="" position="893,404" size="100,100">|sidebar_area&gt;[\
 {
 |sidebar_start&gt;[]
 (display:&quot;update_time&quot;)
@@ -3604,7 +3606,11 @@ document.getElementsByName(&quot;sidebararea&quot;)[0].style.display=&quot;&quot
 |wangfu_item&gt;[]
 }</tw-passagedata><tw-passagedata pid="75" name="末尾" tags="" position="712,42" size="100,100">{
 (if: $Year&gt;3)[
+(if: &quot;剑意&quot; is in (datanames: $myBag))[
+(goto: &quot;结局一&quot;)]
+(else:)[
 (goto: &quot;结局三&quot;)
+]
 ]
 (if: $Year&gt;=2 and $san is true)[
   (if: (random: 1,24)&lt;($Year-2)*12+$Month)[(replace: &quot;不&quot;)[(either:&quot;不不不不不不不不不&quot;, &quot;非是&quot;)]]
@@ -3628,10 +3634,16 @@ document.getElementsByName(&quot;sidebararea&quot;)[0].style.display=&quot;&quot
 (if: (random: 1,24)&lt;($Year-2)*12+$Month)[(replace: &quot;地&quot;)[(either: &quot;处&quot;,&quot;所在&quot;,&quot;区&quot;,&quot;域&quot;)]]
     ]
   
-  
-(if: $jianyi_fellow&#39;s length is 4)[
+(if: $is_end is false)[
+(if: $jianyi_fellow&#39;s length is 4)[(print:&quot;\n&quot;)
 你将剑意交托给了(print: $jianyi_fellow)。你现在要返回现实世界吗？
 (link-rerun:&quot;是&quot;)[(goto:&quot;结局二&quot;)]
+](else:)[
+(if: &quot;剑意&quot; is in (datanames: $myBag))[(print:&quot;\n&quot;)
+你收集了剑意，要返回现实世界吗？
+						(link-rerun: &quot;是&quot;)[(goto: &quot;结局一&quot;)]
+]
+]
 ]
 }</tw-passagedata><tw-passagedata pid="76" name="龙泉县" tags="" position="1229,1125" size="100,100">这里是龙泉县。
 这里有：
@@ -3677,11 +3689,34 @@ document.getElementsByName(&quot;sidebararea&quot;)[0].style.display=&quot;&quot
 [[成都-&gt;成都]]
 ]}
 (link-rerun: &quot;原地发呆一日&quot;)[\
-(set: $Day to it + 1)(goto:&quot;西南群山&quot;)]</tw-passagedata><tw-passagedata pid="78" name="结局一" tags="no-sidebar" position="234,444" size="100,100">你收集了剑意，回到了现实世界。</tw-passagedata><tw-passagedata pid="79" name="结局二" tags="no-sidebar" position="248,325" size="100,100">你将剑意交托给信赖之人，并告知真相。你回到了现实，但小世界依然在稳定地运行着。</tw-passagedata><tw-passagedata pid="80" name="结局三" tags="no-sidebar" position="351,206" size="100,100">崩坏了
+(set: $Day to it + 1)(goto:&quot;西南群山&quot;)]</tw-passagedata><tw-passagedata pid="78" name="结局一" tags="no-sidebar" position="234,444" size="100,100">你收集了剑意，回到了现实世界。但是...(set: $is_end to true)
+(link-rerun: &quot;回顾&quot;)[(display: &quot;结局展示&quot;)]</tw-passagedata><tw-passagedata pid="79" name="结局二" tags="no-sidebar" position="248,325" size="100,100">俯仰皆陈迹，别来几朝夕。(set: $is_end to true)
+
+醒时须长记，百年莫与期。
+
+你于昔年剑意留处，取黄土一抔，又备明水一盏，石火一星，风灯一瞬，忽雷一息，布于四方。
+
+这般那般之后，化为四令，托水火风雷四使，代代相传此令。
+
+良久，你悠悠转醒，原来南柯一梦。
+
+日月往还留无迹
+
+三年尘梦醒有时
+
+(link-rerun: &quot;回顾&quot;)[(display: &quot;结局展示&quot;)]</tw-passagedata><tw-passagedata pid="80" name="结局三" tags="no-sidebar" position="351,206" size="100,100">嘻嘻嘻嘻嘻嘻嘻(set: $is_end to true)
 嘻嘻嘻嘻嘻嘻嘻
 嘻嘻嘻嘻嘻嘻嘻
 嘻嘻嘻嘻嘻嘻嘻
-嘻嘻嘻嘻嘻嘻嘻</tw-passagedata></tw-storydata>
+(link-rerun: &quot;回顾&quot;)[(display: &quot;结局展示&quot;)]</tw-passagedata><tw-passagedata pid="81" name="结局展示" tags="" position="526.5,203" size="100,100">---
+你最后的状态为：
+(display: &quot;人物信息&quot;)
+---
+(display: &quot;辞典&quot;)
+---
+(display: &quot;更新&quot;)
+---
+mua！</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">"use strict";var _slicedToArray=function(){return function(e,t){if(Array.isArray(e))return e;if(Symbol.iterator in Object(e))return function(e,t){var n=[],r=!0,a=!1,i=void 0;try{for(var o,s=e[Symbol.iterator]();!(r=(o=s.next()).done)&&(n.push(o.value),!t||n.length!==t);r=!0);}catch(e){a=!0,i=e}finally{try{!r&&s.return&&s.return()}finally{if(a)throw i}}return n}(e,t);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}!function(){
 /**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
