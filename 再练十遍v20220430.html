@@ -339,9 +339,10 @@ textarea {
   (dialog:_comment, &quot;……&quot;)
 	(set:&quot;心情&quot; of $myInfo to it+1)(set: _current_npc of $npc_rep to it + (random:0,1))
   }]
-    	(if: &quot;重逢&quot; is in $myDict and &quot;剑意&quot; of $myBag &gt; 0 and  _current_npc of $npc_rep &gt;=80 and _current_npc is not in $jianyi_fellow)[\
+    	(if: &quot;重逢&quot; is in $myDict and &quot;剑意&quot; is in (datanames: $myBag)and  _current_npc of $npc_rep &gt;=80 and _current_npc is not in $jianyi_fellow)[\
+	(if:&quot;剑意&quot; of $myBag &gt; 0)[
 * (link-reveal: &quot;交付剑意&quot;)[
-你交托给(print: _current_npc)一份剑意，还余(set:&quot;剑意&quot; of $myBag to it -1)(print: &quot;剑意&quot; of $myBag)份尚未交托。(set: $jianyi_fellow to it + (a:_current_npc))]]
+你交托给(print: _current_npc)一份剑意，还余(set:&quot;剑意&quot; of $myBag to it -1)(print: &quot;剑意&quot; of $myBag)份尚未交托。(set: $jianyi_fellow to it + (a:_current_npc))]]]
   }
 ]
 ]}
@@ -477,9 +478,10 @@ textarea {
 	)
 	(set:&quot;心情&quot; of $myInfo to it+1)(set: &quot;师姐&quot; of $npc_rep to it + (random:0,1))
   }]
-    	(if: &quot;重逢&quot; is in $myDict and &quot;剑意&quot; of $myBag &gt; 0 and  _current_npc of $npc_rep &gt;=80 and _current_npc is not in $jianyi_fellow)[\
+    	(if: &quot;重逢&quot; is in $myDict and &quot;剑意&quot; is in (datanames: $myBag)and  _current_npc of $npc_rep &gt;=80 and _current_npc is not in $jianyi_fellow)[\
+	(if:&quot;剑意&quot; of $myBag &gt; 0)[
 * (link-reveal: &quot;交付剑意&quot;)[
-你交托给(print: _current_npc)一份剑意，还余(set:&quot;剑意&quot; of $myBag to it -1)(print: &quot;剑意&quot; of $myBag)份尚未交托。(set: $jianyi_fellow to it + (a:_current_npc))]]
+你交托给(print: _current_npc)一份剑意，还余(set:&quot;剑意&quot; of $myBag to it -1)(print: &quot;剑意&quot; of $myBag)份尚未交托。(set: $jianyi_fellow to it + (a:_current_npc))]]]
   }
 ]{
 (set: _tmp to (random:1,100))}
@@ -2569,9 +2571,10 @@ WASD
 ]\
 (set: _current_npc to &quot;熊猫&quot;)\
 (display:&quot;信件&quot;)\
- (if: &quot;重逢&quot; is in $myDict and &quot;剑意&quot; of $myBag &gt; 0 and  _current_npc of $npc_rep &gt;=80 and _current_npc is not in $jianyi_fellow)[\
+ (if: &quot;重逢&quot; is in $myDict and &quot;剑意&quot; is in (datanames: $myBag)and  _current_npc of $npc_rep &gt;=80 and _current_npc is not in $jianyi_fellow)[\
+	(if:&quot;剑意&quot; of $myBag &gt; 0)[
 * (link-reveal: &quot;交付剑意&quot;)[\
-你交托给(print: _current_npc)一份剑意，还余(set:&quot;剑意&quot; of $myBag to it -1)(print: &quot;剑意&quot; of $myBag)份尚未交托。(set: $jianyi_fellow to it + (a:_current_npc))]]\
+你交托给(print: _current_npc)一份剑意，还余(set:&quot;剑意&quot; of $myBag to it -1)(print: &quot;剑意&quot; of $myBag)份尚未交托。(set: $jianyi_fellow to it + (a:_current_npc))]]]\
 (set: $Day to it + 1)(display:&quot;update_time&quot;)
 (set: _tmp to (random: 1,100))
 (if: (&quot;八卦掌&quot; is not in (&quot;掌&quot; of $arms_detail)))[
@@ -2768,9 +2771,10 @@ WASD
 	)
 	(set:&quot;心情&quot; of $myInfo to it-1)
   }]
-  	(if: &quot;重逢&quot; is in $myDict and &quot;剑意&quot; of $myBag &gt; 0 and  &quot;王老斯&quot; of $npc_rep &gt;=80 and &quot;王老斯&quot; is not in $jianyi_fellow)[\
+  	(if: &quot;重逢&quot; is in $myDict and &quot;剑意&quot; is in (datanames: $myBag)and  &quot;王老斯&quot; of $npc_rep &gt;=80 and &quot;王老斯&quot; is not in $jianyi_fellow)[\
+	(if:&quot;剑意&quot; of $myBag &gt; 0)[
 * (link-reveal: &quot;交付剑意&quot;)[
-你交托给王老斯一份剑意，还余(set:&quot;剑意&quot; of $myBag to it -1)(print: &quot;剑意&quot; of $myBag)份尚未交托。(set: $jianyi_fellow to it + (a:&quot;王老斯&quot;))]]
+你交托给王老斯一份剑意，还余(set:&quot;剑意&quot; of $myBag to it -1)(print: &quot;剑意&quot; of $myBag)份尚未交托。(set: $jianyi_fellow to it + (a:&quot;王老斯&quot;))]]]
 ]</tw-passagedata><tw-passagedata pid="45" name="王子" tags="" position="1182,1393" size="100,100">(link-rerun: $wangzi_name)[(replace: ?npc_area)[
   (set: _current_npc to &quot;王子&quot;)\
   {(if: _current_npc is not in (datanames:$npc_rep))[(set: $npc_rep to it + (dm: _current_npc,0))]\
@@ -2781,9 +2785,11 @@ WASD
   (dialog:_comment, &quot;王子！！！（大鹏展翅.jpg）&quot;)
 	(set:&quot;心情&quot; of $myInfo to it+1)(set: _current_npc of $npc_rep to it + (random:0,1))
   }]
-  	(if: &quot;重逢&quot; is in $myDict and &quot;剑意&quot; of $myBag &gt; 0 and  &quot;王子&quot; of $npc_rep &gt;=80 and &quot;王子&quot; is not in $jianyi_fellow)[\
+  	(if: &quot;重逢&quot; is in $myDict and &quot;剑意&quot; is in (datanames: $myBag)and  &quot;王子&quot; of $npc_rep &gt;=80 and &quot;王子&quot; is not in $jianyi_fellow)[\
+	(if:&quot;剑意&quot; of $myBag &gt; 0)[
 * (link-reveal: &quot;交付剑意&quot;)[
 你交托给王子一份剑意，还余(set:&quot;剑意&quot; of $myBag to it -1)(print: &quot;剑意&quot; of $myBag)份尚未交托。(set: $jianyi_fellow to it + (a:&quot;王子&quot;))]]
+]
   }
 ]]</tw-passagedata><tw-passagedata pid="46" name="刀姐" tags="" position="1123,1500" size="100,100">(link-rerun: $dao_name)[(replace: ?npc_area)[
   (set: _current_npc to &quot;刀刀&quot;)\
@@ -2794,9 +2800,10 @@ WASD
   (dialog:_comment, &quot;……&quot;)
 	(set:&quot;心情&quot; of $myInfo to it+1)(set: _current_npc of $npc_rep to it + (random:0,1))
   }]
-  	(if: &quot;重逢&quot; is in $myDict and &quot;剑意&quot; of $myBag &gt; 0 and  &quot;刀刀&quot; of $npc_rep &gt;=80 and &quot;刀刀&quot; is not in $jianyi_fellow)[\
+  	(if: &quot;重逢&quot; is in $myDict and &quot;剑意&quot; is in (datanames: $myBag)and  &quot;刀刀&quot; of $npc_rep &gt;=80 and &quot;刀刀&quot; is not in $jianyi_fellow)[\
+	(if:&quot;剑意&quot; of $myBag &gt; 0)[
 * (link-reveal: &quot;交付剑意&quot;)[
-你交托给刀刀一份剑意，还余(set:&quot;剑意&quot; of $myBag to it -1)(print: &quot;剑意&quot; of $myBag)份尚未交托。(set: $jianyi_fellow to it + (a:&quot;刀刀&quot;))]]
+你交托给刀刀一份剑意，还余(set:&quot;剑意&quot; of $myBag to it -1)(print: &quot;剑意&quot; of $myBag)份尚未交托。(set: $jianyi_fellow to it + (a:&quot;刀刀&quot;))]]]
   }
 ]]</tw-passagedata><tw-passagedata pid="47" name="汉魏故城" tags="" position="906,1012" size="100,100">&#39;&#39;维修中&#39;&#39;
 {
@@ -3014,9 +3021,10 @@ WASD
 		(dialog: &quot;需要达到报社成员的认可，才能进入报社哦&quot;,&quot;原来如此...&quot;)
 	]
   ]
-  	(if: &quot;重逢&quot; is in $myDict and &quot;剑意&quot; of $myBag &gt; 0 and  &quot;璐姐&quot; of $npc_rep &gt;=80 and &quot;璐姐&quot; is not in $jianyi_fellow)[\
+  	(if: &quot;重逢&quot; is in $myDict and &quot;剑意&quot; is in (datanames: $myBag)and  &quot;璐姐&quot; of $npc_rep &gt;=80 and &quot;璐姐&quot; is not in $jianyi_fellow)[\
+	(if:&quot;剑意&quot; of $myBag &gt; 0)[
 * (link-reveal: &quot;交付剑意&quot;)[
-你交托给璐姐一份剑意，还余(set:&quot;剑意&quot; of $myBag to it -1)(print: &quot;剑意&quot; of $myBag)份尚未交托。(set: $jianyi_fellow to it + (a:&quot;璐姐&quot;))]]
+你交托给璐姐一份剑意，还余(set:&quot;剑意&quot; of $myBag to it -1)(print: &quot;剑意&quot; of $myBag)份尚未交托。(set: $jianyi_fellow to it + (a:&quot;璐姐&quot;))]]]
   }
 ]]
 |npc_area&gt;[]</tw-passagedata><tw-passagedata pid="52" name="牡丹园" tags="" position="759,838" size="100,100">黄芍药、绯桃、瑞莲、千叶李、红郁李</tw-passagedata><tw-passagedata pid="53" name="睦未" tags="" position="1052,838" size="100,100">(link-rerun: $mu_name)[(replace: ?npc_area)[
@@ -3028,9 +3036,10 @@ WASD
   (dialog:_comment, &quot;……&quot;)
 	(set:&quot;心情&quot; of $myInfo to it+1)(set: _current_npc of $npc_rep to it + (random:0,1))
   }]
-  	(if: &quot;重逢&quot; is in $myDict and &quot;剑意&quot; of $myBag &gt; 0 and  &quot;睦未&quot; of $npc_rep &gt;=80 and &quot;睦未&quot; is not in $jianyi_fellow)[\
+  	(if: &quot;重逢&quot; is in $myDict and &quot;剑意&quot; is in (datanames: $myBag)and  &quot;睦未&quot; of $npc_rep &gt;=80 and &quot;睦未&quot; is not in $jianyi_fellow)[\
+	(if:&quot;剑意&quot; of $myBag &gt; 0)[
 * (link-reveal: &quot;交付剑意&quot;)[
-你交托给睦未一份剑意，还余(set:&quot;剑意&quot; of $myBag to it -1)(print: &quot;剑意&quot; of $myBag)份尚未交托。(set: $jianyi_fellow to it + (a:&quot;睦未&quot;))]]
+你交托给睦未一份剑意，还余(set:&quot;剑意&quot; of $myBag to it -1)(print: &quot;剑意&quot; of $myBag)份尚未交托。(set: $jianyi_fellow to it + (a:&quot;睦未&quot;))]]]
   }]
 ]
 |npc_area&gt;[]</tw-passagedata><tw-passagedata pid="54" name="邙山" tags="" position="1317,1005" size="100,100">{
@@ -3429,9 +3438,10 @@ document.getElementsByName(&quot;sidebararea&quot;)[0].style.display=&quot;&quot
   (dialog:_comment, &quot;……&quot;)
 	(set:&quot;心情&quot; of $myInfo to it+1)(set: _current_npc of $npc_rep to it + (random:0,1))
   }]
-  	(if: &quot;重逢&quot; is in $myDict and &quot;剑意&quot; of $myBag &gt; 0 and  _current_npc of $npc_rep &gt;=80 and _current_npc is not in $jianyi_fellow)[\
+  	(if: &quot;重逢&quot; is in $myDict and &quot;剑意&quot; is in (datanames: $myBag)and  _current_npc of $npc_rep &gt;=80 and _current_npc is not in $jianyi_fellow)[\
+	(if:&quot;剑意&quot; of $myBag &gt; 0)[
 * (link-reveal: &quot;交付剑意&quot;)[
-你交托给(print: _current_npc)一份剑意，还余(set:&quot;剑意&quot; of $myBag to it -1)(print: &quot;剑意&quot; of $myBag)份尚未交托。(set: $jianyi_fellow to it + (a:_current_npc))]]
+你交托给(print: _current_npc)一份剑意，还余(set:&quot;剑意&quot; of $myBag to it -1)(print: &quot;剑意&quot; of $myBag)份尚未交托。(set: $jianyi_fellow to it + (a:_current_npc))]]]
   
   }]\
 ]
@@ -3460,9 +3470,10 @@ document.getElementsByName(&quot;sidebararea&quot;)[0].style.display=&quot;&quot
 	  (dialog: &quot;更❤多❤对❤话❤请❤+❤v❤友❤情❤发❤电❤&quot;, &quot;…………&quot;)
 	)}
 	]
-	(if: &quot;重逢&quot; is in $myDict and &quot;剑意&quot; of $myBag &gt; 0 and  &quot;狮虎&quot; of $npc_rep &gt;=80 and &quot;狮虎&quot; is not in $jianyi_fellow)[\
+	(if: &quot;重逢&quot; is in $myDict and &quot;剑意&quot; is in (datanames: $myBag)and  &quot;狮虎&quot; of $npc_rep &gt;=80 and &quot;狮虎&quot; is not in $jianyi_fellow)[\
+	(if:&quot;剑意&quot; of $myBag &gt; 0)[
 * (link-reveal: &quot;交付剑意&quot;)[
-你交托给狮虎一份剑意，还余(set:&quot;剑意&quot; of $myBag to it -1)(print: &quot;剑意&quot; of $myBag)份尚未交托。(set: $jianyi_fellow to it + (a:&quot;狮虎&quot;))]]
+你交托给狮虎一份剑意，还余(set:&quot;剑意&quot; of $myBag to it -1)(print: &quot;剑意&quot; of $myBag)份尚未交托。(set: $jianyi_fellow to it + (a:&quot;狮虎&quot;))]]]
 	}
   ] </tw-passagedata><tw-passagedata pid="69" name="update_weather" tags="" position="959,626" size="100,100">{
 (set: $weather to (either:
@@ -3470,7 +3481,7 @@ document.getElementsByName(&quot;sidebararea&quot;)[0].style.display=&quot;&quot
   &quot;🌞&quot;,&quot;❄&quot;,&quot;🌨&quot;,&quot;🌪&quot;,&quot;🌫&quot;,&quot;🌈&quot;
 	)
 )
-}</tw-passagedata><tw-passagedata pid="70" name="update_location" tags="" position="908.5,764" size="100,100">{(set:$currentLoc to $locName of $locMap)
+}</tw-passagedata><tw-passagedata pid="70" name="update_location" tags="" position="908,764" size="100,100">{(set:$currentLoc to $locName of $locMap)
 (if:$lastLoc&gt;0 and $lastLoc is not $currentLoc and $lastLoc is in (datanames: $graph) and $currentLoc is in ($graph&#39;s ($lastLoc)))[
 (set: _day_passed to $graph&#39;s ($lastLoc)&#39;s  ($currentLoc))
 (if: $yujian is true)[
@@ -3484,7 +3495,7 @@ document.getElementsByName(&quot;sidebararea&quot;)[0].style.display=&quot;&quot
 (set: &quot;饱腹值&quot; of $myInfo to it - (floor: _day_passed*0.5))
 (set: $Day to it + _day_passed)
 ]
-(set: $lastLoc = $currentLoc)}</tw-passagedata><tw-passagedata pid="71" name="摆擂" tags="" position="983.5,1458" size="100,100">{
+(set: $lastLoc = $currentLoc)}</tw-passagedata><tw-passagedata pid="71" name="摆擂" tags="" position="983,1458" size="100,100">{
 	---
 	  (set: _passed_time to 1)
 	  (if: _tmp&lt;10)[
@@ -3551,13 +3562,13 @@ document.getElementsByName(&quot;sidebararea&quot;)[0].style.display=&quot;&quot
 		
 		
 	  ]
-	}</tw-passagedata><tw-passagedata pid="72" name="熊猫饲养手册" tags="" position="1573,716.5" size="100,100">
+	}</tw-passagedata><tw-passagedata pid="72" name="熊猫饲养手册" tags="" position="1573,716" size="100,100">
 * 介绍
 ** 熊猫，aka食铁兽，好食铁。传闻西南更西，有大山，山中有神铁，为其所爱。
 * 熊猫之歌
 ** (cycling-link: &quot;圆滚滚~的熊~猫~ &quot;,&quot;满呀么满~地~爬~&quot;, &quot;掀起~那个镢~头~&quot;, &quot;来呀来把~熊~猫~刨~&quot;)
 * 熊猫之歌（又二）
-** 睦未未！要！当！（捂嘴）</tw-passagedata><tw-passagedata pid="73" name="门派秘辛" tags="" position="1696.5,634.5" size="100,100">* 养生派≈黄门 （哦？是吗.jpg）
+** 睦未未！要！当！（捂嘴）</tw-passagedata><tw-passagedata pid="73" name="门派秘辛" tags="" position="1696,634" size="100,100">* 养生派≈黄门 （哦？是吗.jpg）
 * 狮虎≈O(log 师姐) (about xxxxxx) O(exp 师姐) otherwise
 * (link-rerun: &quot;主线任务&quot;)[\
 ** 黄土：请关注各处地理环境描写
@@ -3583,7 +3594,7 @@ document.getElementsByName(&quot;sidebararea&quot;)[0].style.display=&quot;&quot
 …
 日月往还留无迹 三年尘梦醒有时
 …
-末尾数行小字，道明此处乃作者「到此一游」性质的恶趣味发疯文学。又注明「真正的结局是…」
+末尾数行小字，道明此处乃作者「到此一游」性质的恶趣味发疯文学。又注明「真正的结局是…」(呕......)
 (if: &quot;世界终点?&quot; is not in $myDict)[
 (set: $myDict to it + (a:&quot;世界终点?&quot;))
 ]
