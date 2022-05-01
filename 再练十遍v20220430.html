@@ -9,7 +9,14 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play 再练十遍.</tw-noscript></noscript></tw-story>
-<tw-storydata name="再练十遍" startnode="11" creator="Twine" creator-version="2.3.14" ifid="3EF3F2EB-D3CD-414F-BDBA-D76B884FA90C" zoom="1" format="Harlowe" format-version="3.2.2" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-link, .enchantment-link {
+<tw-storydata name="再练十遍" startnode="11" creator="Twine" creator-version="2.3.14" ifid="3EF3F2EB-D3CD-414F-BDBA-D76B884FA90C" zoom="1" format="Harlowe" format-version="3.2.2" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">body{
+    -moz-user-select:none; /*火狐*/
+    -webkit-user-select:none; /*webkit浏览器*/
+    -ms-user-select:none; /*IE10*/
+    -khtml-user-select:none; /*早期浏览器*/
+    user-select:none;
+}
+tw-link, .enchantment-link {
 	background-color: white;
   	color: black;
 	margin: 0em;
@@ -297,6 +304,7 @@ textarea {
 	(set: _store_name to &quot;点心摊&quot;)
 	(set: _store_list to $dianxin_store)
 	(display:&quot;店铺&quot;)(print:&quot;\n&quot;)
+	|store_msg&gt;[](print: &quot;\n&quot;)
 
 }]
 ]
@@ -3318,7 +3326,7 @@ WASD
 			&quot;蜡烛&quot;,
 			&quot;火折&quot;
 		))
-		(set: _lib_name to &quot;书房陈列&quot;)
+		(set: _lib_name to &quot;密室陈列&quot;)
 		(set: _lib_list to $yangsheng_lib)
 		(display:&quot;图书馆&quot;)}</tw-passagedata><tw-passagedata pid="61" name="养生派训练室" tags="" position="374,1417" size="100,100">这里是养生派的训练室，厚厚地铺了层地毯，两边兵器架上整齐地收了些(link-rerun: &quot;长剑&quot;)[(replace:?yangsheng_item)[\
 开发中]]。
@@ -3623,7 +3631,13 @@ document.getElementsByName(&quot;sidebararea&quot;)[0].style.display=&quot;&quot
   (if: (random: 1,24)&lt;($Year-2)*12+$Month)[(replace: &quot;的&quot;)[(either: &quot;很好的&quot;,&quot;之&quot;)]]
   (if: (random: 1,24)&lt;($Year-2)*12+$Month)[(replace: &quot;什么&quot;)[(either: &quot;人生态度&quot;,&quot;何&quot;)]]
   (if: (random: 1,24)&lt;($Year-2)*12+$Month)[(replace: &quot;是&quot;)[(either:&quot;是我的&quot;,&quot;乃&quot;,&quot;为&quot;)]]
+  (if: (random: 1,24)&lt;($Year-2)*12+$Month)[(replace: &quot;人&quot;)[(either:&quot;偃甲&quot;,&quot;傀儡&quot;,&quot;生灵&quot;,&quot;生物&quot;)]]
+    (if: (random: 1,24)&lt;($Year-2)*12+$Month)[(replace: &quot;山&quot;)[(either:&quot;⛰️&quot;,&quot;|||&quot;)]]
+    (if: (random: 1,24)&lt;($Year-2)*12+$Month)[(replace: &quot;湖&quot;)[(either:&quot;水&quot;,&quot;~~&quot;)]]
 
+    (if: (random: 1,24)&lt;($Year-2)*12+$Month)[(replace: &quot;，&quot;)[(either:&quot;！！！&quot;,&quot;，，，，&quot;)]]
+
+    (if: (random: 1,24)&lt;($Year-2)*12+$Month)[(replace: &quot;：&quot;)[(either:&quot;嘻嘻嘻&quot;,&quot;嗯嗯嗯&quot;)]]
 (if: (random: 1,24)&lt;($Year-2)*12+$Month)[(replace: &quot;武林&quot;)[(either: &quot;杭州&quot;,&quot;余杭&quot;,&quot;馀杭&quot;)]]
 (if: (random: 1,24)&lt;($Year-2)*12+$Month)[(replace: &quot;会稽&quot;)[(either: &quot;越州&quot;,&quot;绍兴&quot;,&quot;所在&quot;)]]
 (if: (random: 1,24)&lt;($Year-2)*12+$Month)[(replace: &quot;江夏&quot;)[(either: &quot;鄂州&quot;,&quot;武汉&quot;,&quot;东湖&quot;)]]
@@ -3708,7 +3722,7 @@ document.getElementsByName(&quot;sidebararea&quot;)[0].style.display=&quot;&quot
 嘻嘻嘻嘻嘻嘻嘻
 嘻嘻嘻嘻嘻嘻嘻
 嘻嘻嘻嘻嘻嘻嘻
-(link-rerun: &quot;回顾&quot;)[(display: &quot;结局展示&quot;)]</tw-passagedata><tw-passagedata pid="81" name="结局展示" tags="" position="526.5,203" size="100,100">---
+(link-rerun: &quot;回顾&quot;)[(display: &quot;结局展示&quot;)]</tw-passagedata><tw-passagedata pid="81" name="结局展示" tags="" position="526,203" size="100,100">---
 你最后的状态为：
 (display: &quot;人物信息&quot;)
 ---
