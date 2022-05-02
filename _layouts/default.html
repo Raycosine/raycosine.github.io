@@ -106,7 +106,7 @@ function logKey(e) {
 		<a href="#about" onclick="visit_about()">
 		<rect x="18.772" y="14.76" transform="matrix(0.7071 0.7071 -0.7071 0.7071 28.7152 -22.7099)" fill="#01012b" width="46" height="17.097"></rect>
 		</a>
-		<circle fill="#05d9e8" stroke="#ff2a6e" stroke-miterlimit="10" cx="93.5" cy="142.161" r="85"></circle>
+		<circle class="sub_circle" fill="#05d9e8" stroke="#ff2a6e" stroke-miterlimit="10" cx="93.5" cy="142.161" r="85"></circle>
 		<line fill="none" stroke="#ff2a6e" stroke-miterlimit="10" x1="8" y1="49.577" x2="39.769" y2="81.344"></line>
 		<polygon fill="#01012b" points="159.902,183.322 171.327,194.091 165.614,199.646 153.413,187.774 "></polygon>
 		<line fill="none" stroke="#ff2a6e" stroke-miterlimit="10" x1="152.96" y1="181.206" x2="252.486" y2="280.733"></line>
@@ -844,9 +844,9 @@ function logKey(e) {
 		</g>
 		</svg>
 	<div style="display:flex;flex-direction:row;align-items: center;width: 30%;align-content: space-between;justify-content: space-evenly;">
-<kbd onclick="visit_home()">1</kbd> <a class="home" onclick="visit_home()"> Homepage</a> <kbd onclick="visit_about()">2</kbd><a class="home"  onclick="visit_about()">About</a><kbd onclick="visit_quantum()">3</kbd><a class="home" onclick="visit_quantum()">Quantum</a><kbd onclick="visit_classical()">4</kbd><a class="home" onclick="visit_classical()">Classical </a>
+<kbd onclick="visit_home()">1</kbd> <a style="display:flex;flex-direction:row;" class="home1" onclick="visit_home()"> <div class="home_c" style="opacity:0">|</div><div class="home_a">Homepage</div><div class="home_b">These</div></a> <kbd onclick="visit_about()">2</kbd><a style="display:flex;flex-direction:row;" class="home2"  onclick="visit_about()"><div class="home_c" style="opacity:0">|</div><div class="home_a">About</div><div class="home_b">are</div></a><kbd onclick="visit_quantum()">3</kbd><a style="display:flex;flex-direction:row;" class="home3" onclick="visit_quantum()"><div class="home_c" style="opacity:0">|</div><div class="home_a">Quantum</div><div class="home_b">keyboard</div></a><kbd onclick="visit_classical()">4</kbd><a style="display:flex;flex-direction:row;" class="home4" onclick="visit_classical()"><div class="home_c" style="opacity:0">|</div><div class="home_a">Classical</div><div class="home_b">shortcuts</div> </a>
 </div>
-<div class="classical" id="classical" style="display: flex; opacity: 1;width: 50%;flex-direction: column;align-items: flex-start;align-content: center;">
+<div class="classical" id="classical" style="display: none; opacity: 1;width: 50%;flex-direction: column;align-items: flex-start;align-content: center;">
 	<div>
 		<h2 style="font-size:32px;"> My music </h2>
 
