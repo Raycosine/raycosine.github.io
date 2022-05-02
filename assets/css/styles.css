@@ -14,7 +14,7 @@ body.container_post {
 }
 
 div.container {
-	display:flex;
+	display:none;
 	flex-flow: column wrap;
 	flex-grow: 1;
 	justify-content: space-around;
@@ -24,7 +24,7 @@ div.container {
 }
 
 div.container_row {
-	display:none;
+	display:flex;
 	flex-flow: column wrap;
 	flex-grow: 1;
 	justify-content: space-around;
@@ -33,7 +33,7 @@ div.container_row {
 	
 }
 div.container_small {
-	display:flex;
+	display:none;
 	flex-flow: column wrap;
 	flex-grow: 1;
 	justify-content: space-around;
@@ -59,7 +59,7 @@ div.container_post {
 	justify-content: space-around;
 	align-items: center;
 	align-content: center;
-	display:flex;
+	display:none;
 	opacity:1;
 	animation-name: init;
 	animation-duration: 0.7s;

@@ -21,15 +21,17 @@ layout: post
 </script>
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 {% seo %}
-
+<script>
+document.getElementById('container_small').style.display='flex';document.getElementById('container_post').style.display='flex';
+</script>
   </head>
 
-<body class="container_post">
-<div class="container_small" id="container_small">
+<body class="container_post" style="display:block">
+<div class="container_small" style="display:flex" id="container_small">
 <img src="/assets/images/logo_small.svg" class="logo" href="/index.html" onclick="window.location.href = '../../../../index.html';"></img>
 </div>
 
-<div class="container_post" id="container_post">
+<div class="container_post" style="display:flex" id="container_post">
  <section id="main_content">
 <small>{{ page.date | date: "%-d %B %Y" }}</small>
 <h1>{{ page.title }}</h1>
