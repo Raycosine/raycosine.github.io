@@ -400,21 +400,25 @@ div.home_b{
     display:none;
     opacity:0;
     font-size:0;
+    height:0px;
   }
   25%{
     display:none;
     opacity:0;
     font-size:0;
+    height:0px;
   }
   50%{
     display:absolute;
     opacity:1;
     font-size:16px;
+    height:24px;
   }
   to{
     display:absolute;
     opacity:1;
     font-size:16px;
+    height:24px;
   }
 }
 @keyframes textb{
@@ -422,22 +426,25 @@ div.home_b{
     display:absolute;
     opacity:1;
     font-size:16px;
+    height:24px;
   }
   25%{
     display:absolute;
     opacity:1;
     font-size:16px;
+    height:24px;
   }
   50%{
     display:none;
     opacity:0;
     font-size:0;
-    
+    height:0px;
   }
   to{
     display:none;
     opacity:0;
     font-size:0;
+    height:0px;
   }
 }
 @keyframes shadows{
@@ -445,7 +452,7 @@ div.home_b{
     box-shadow: 2px 2px 0px #ff2a6e, -2px -2px 0px #ff2a6e73;
   }
   to{
-    box-shadow: 8px 8px 0px #ff2a6e, -8px 8px 0px #ff2a6e73;
+    box-shadow: 8px 8px 0px #ff2a6e, -8px -8px 0px #ff2a6e73;
   }
 }
 a:hover{
@@ -537,8 +544,13 @@ kbd {
   border-radius: 4px;
   padding: 0.1em 0.5em;
   margin: 0 0.2em;
-  box-shadow: 0 1px 0px #ff2a6e, 0 0 0 2px  #05d9e8 inset;
+  box-shadow: 0 1px 0px #ff2a6e, 0 0 0 2px  #05d9e8  inset, 2px 2px 0px #ff2a6e, -2px -2px 0px #ff2a6e73;
   background-color: #05d9e888;
+  animation-name: shadows1;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
 }
 kbd:hover {
   display: inline-block;
@@ -546,8 +558,17 @@ kbd:hover {
   border-radius: 4px;
   padding: 0.1em 0.5em;
   margin: 0 0.2em;
-  box-shadow: 0 1px 0px #ff2a6e, 0 0 0 2px  #05d9e8 inset;
+  box-shadow: 0 1px 0px #ff2a6e, 0 0 0 2px  #05d9e8 inset, 8px 8px 0px #ff2a6e, -8px -8px 0px #ff2a6e73;
   background-color: #05d9e800;
   transform: translate(0px,2px);
   transition: all 0.3s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+@keyframes shadows1{
+  from{ 
+    box-shadow: 0 1px 0px #ff2a6e, 0 0 0 2px  #05d9e8 inset, 8px 8px 0px #ff2a6e, -8px -8px 0px #ff2a6e73;
+  }
+  to{
+    box-shadow: 0 1px 0px #ff2a6e, 0 0 0 2px  #05d9e8  inset, 2px 2px 0px #ff2a6e, -2px -2px 0px #ff2a6e73;
+  }
 }
