@@ -399,25 +399,25 @@ div.home_b{
   from{
     display:none;
     opacity:0;
-    font-size:0;
+    //font-size:0;
     height:0px;
   }
   25%{
     display:none;
     opacity:0;
-    font-size:0;
+    //font-size:0;
     height:0px;
   }
   50%{
     display:absolute;
     opacity:1;
-    font-size:16px;
+    //font-size:16px;
     height:24px;
   }
   to{
     display:absolute;
     opacity:1;
-    font-size:16px;
+    //font-size:16px;
     height:24px;
   }
 }
@@ -425,25 +425,25 @@ div.home_b{
   from{
     display:absolute;
     opacity:1;
-    font-size:16px;
+    //font-size:16px;
     height:24px;
   }
   25%{
     display:absolute;
     opacity:1;
-    font-size:16px;
+    //font-size:16px;
     height:24px;
   }
   50%{
     display:none;
     opacity:0;
-    font-size:0;
+    //font-size:0;
     height:0px;
   }
   to{
     display:none;
     opacity:0;
-    font-size:0;
+    //font-size:0;
     height:0px;
   }
 }
