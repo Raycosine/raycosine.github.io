@@ -20,13 +20,13 @@
       <div class="track-total" >
         <div class="track-des" style="height:0px;"></div>
         <div class="track-staff" style="height:0px;" ></div>
-        <div class="track-lyrics" style="height:65%;"></div>
+        <div class="track-lyrics" style="height:70%;"></div>
       </div>
       <div style="margin-bottom:25px;"> <a onclick="visit_des()"> Description </a> / <a onclick="visit_staff()"> Staff </a> / <a onclick="visit_lyrics()"> Lyrics </a></div>
       <div class="track-name">Track Name</div>
     </div>
     <div class="buttons">
-      <div style="display: flex; flex-direction: row;">
+      <div style="display: flex; flex-direction: row; transform: scale(0.75);">
         <div class="prev-track" onclick="prevTrack()"><i class="fa fa-step-backward fa-2x"></i></div>
         <div class="playpause-track" onclick="playpauseTrack()"><i class="fa fa-play-circle fa-2x"></i></div>
         <div class="next-track" onclick="nextTrack()"><i class="fa fa-step-forward fa-2x"></i></div>
@@ -38,9 +38,9 @@
       </div>
 
       <div class="slider_container">
-        <i class="fa fa-volume-down"></i>
+        <i class="fa fa-volume-down" style="transform: scale(0.75);"></i>
         <input type="range" min="1" max="100" value="99" class="volume_slider" onchange="setVolume()">
-        <i class="fa fa-volume-up"></i>
+        <i class="fa fa-volume-up" style="transform: scale(0.75);"></i>
       </div>
 
     </div>

@@ -153,7 +153,7 @@ function loadTrack(track_index) {
 function loadListInfo(){
   track_list_info.innerHTML = "";
   for(var i=0;i<track_list.length; i++){
-    track_list_info.innerHTML += "<div class='list-info-item list-info-"+(i+1).toString()+"' onclick='loadTrack("+(i).toString()+")' style='margin-top: 2px;'>" + (i+1).toString() + ". "+ track_list[i].name + "</div>";
+    track_list_info.innerHTML += "<div class='list-info-item list-info-"+(i+1).toString()+"' onclick='loadTrack("+(i).toString()+")' style='margin-left: 5px;'>" + (i+1).toString() + ". "+ track_list[i].name + "</div>";
   }
 }
 function resetValues() {
@@ -236,17 +236,17 @@ function seekUpdate() {
 
 
 function visit_des(){
-  track_des.style.height="65%";
+  track_des.style.height="70%";
   track_staff.style.height="0%";
   track_lyrics.style.height="0%";
 }
 function visit_staff(){
   track_des.style.height="0%";
-  track_staff.style.height="65%";
+  track_staff.style.height="70%";
   track_lyrics.style.height="0%";
 }
 function visit_lyrics(){
   track_des.style.height="0%";
   track_staff.style.height="0%";
-  track_lyrics.style.height="65%";
+  track_lyrics.style.height="70%";
 }
