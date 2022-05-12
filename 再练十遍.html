@@ -848,7 +848,10 @@ set_sbar_key();set_arrow_key();set_main_key();
   (link-rerun:&quot;旧的回忆&quot;)[(display:&quot;定义&quot;)(goto:&quot;载入游戏&quot;)]
   ]
 ](else:)
-[(goto:&quot;初入江湖-1&quot;)]</tw-passagedata><tw-passagedata pid="12" name="王府" tags="" position="487,1271" size="100,100">{(set:$locName to &quot;王府&quot;)
+[(goto:&quot;初入江湖-1&quot;)]
+---
+最近更新：
+(display: &quot;更新文本&quot;)</tw-passagedata><tw-passagedata pid="12" name="王府" tags="" position="487,1271" size="100,100">{(set:$locName to &quot;王府&quot;)
 (set: _practice to (a:
 	&quot;咏春·小念头&quot;, 
 	&quot;咏春·寻桥&quot;,
@@ -1044,7 +1047,8 @@ set_sbar_key();set_arrow_key();set_main_key();
 	  * (link-rerun: &quot;和师姐闲聊&quot;)[{(set:_sifu_name of $npc_rep to it + (random:1,2))
 	(either:
 	(dialog: &quot;我昨天做了一个梦（省略六千字）&quot;, &quot;…………&quot;),
-	(dialog: &quot;太极为什么变成了离散太极呢因为&quot;+(either: &quot;我打的就是离散的啊&quot;,&quot;我真的打不了连续的啊&quot;),&quot;………………&quot;),
+	(dialog: &quot;我已经打得很慢了！！！！！（拍桌）&quot;, &quot;…………&quot;),
+	(dialog: &quot;太极为什么变成了离散太极呢因为&quot;+(either: &quot;我打的就是离散的啊&quot;,&quot;我真的打不了连续的啊&quot;,&quot;我平时很慢的&quot;),&quot;………………&quot;),
 	(dialog: (either: &quot;掌门轮流做，今天到我家&quot;,&quot;你看到的掌门如果不是我，那就是我的偃甲（胡言乱语被拖走）&quot;,&quot;偃甲的聊天功能还没有做好&quot;),&quot;……&quot;),
 	(dialog: &quot;暴打楼下狗头&quot;,&quot;......&quot;),
 	(dialog: &quot;绝密地点只有养生派全派好友才有资格知道&quot;,&quot;......&quot;)
@@ -1377,39 +1381,7 @@ WASD
   (icon-restart:)
   (icon-undo:)(icon-redo:)
 }
-]</tw-passagedata><tw-passagedata pid="20" name="更新" tags="" position="694,187" size="100,100">2022.5
-* 优化了背包显示
-* 增加了狮虎好感度行为、对话，微调武功设定
-* 更新了地图
----
-2022.4
-* 丰富了wls和睦未暑期出游的设定（快点练拳）
-* 每年11月的武术比赛（未完成，不做这个了！）
-* 丰富了养生派建筑、物品和门派任务（未完成）
-* 增加了八卦小报内容
-* 增加手机适配（无法自动识别，需要手动调整），优化了一些html样式
-* 完成了主线（多结局）
-* 会变饿了！
-* 增加了天气
-* Trigger warning:存在掉san内容，设置处可选择关闭！ 
----
-2021.10
-相对于上一个版本的主要更新：
-* 完善npc（未完成）
-* 一点点任务
----
-* 增加&amp;优化了剑说
-* 解决了侧边栏的个人信息（主要是时间）无法即时同步的问题
-* 优化了一些显示
-* 增加了创建角色时的描述
-* 增加（不完全）键盘快捷键：数字为侧边栏快捷键，字母为主页面快捷键，空格为对话快捷键（多个回答选项时有bug，但是现在只有一个多个回答选项嘻嘻）
-* 优化了（不完全）NPC和地区数值
-* 略
-待解决：
-* 战斗（大概率没有）
-* 数值作用
-* 一点点剧情
-* 一点点任务
+]</tw-passagedata><tw-passagedata pid="20" name="更新" tags="" position="694,187" size="100,100">(display: &quot;更新文本&quot;)
 ---
 如有错误，可尝试(link-rerun: &quot;重置定义&quot;)[(display: &quot;定义&quot;)]
 (link-rerun:&quot;返回&quot;)[(goto:$locName)](display:&quot;末尾&quot;)</tw-passagedata><tw-passagedata pid="21" name="random_name" tags="" position="1062,254" size="100,100">(set: $randomName to $surname&#39;s (random:1,$surname&#39;s length)+$namelist&#39;s (random:1,$namelist&#39;s length))</tw-passagedata><tw-passagedata pid="22" name="init_info_refresh" tags="" position="620,658" size="100,100">{(set:(&quot;亲和度&quot; of $myInfo) to (random:-100,100))
@@ -3660,7 +3632,7 @@ document.getElementsByName(&quot;sidebararea&quot;)[0].style.display=&quot;&quot
 ---
 (display: &quot;更新&quot;)
 ---
-mua！</tw-passagedata><tw-passagedata pid="82" name="肉干" tags="" position="346.5,898.5" size="100,100">(if: $cafe_store is not 0)[{
+mua！</tw-passagedata><tw-passagedata pid="82" name="肉干" tags="" position="346,898" size="100,100">(if: $cafe_store is not 0)[{
   * (link-rerun: &quot;敬上“肉干”&quot;)[{
   	(set: _avail_cafe to (a:))
 	(for: each _temp_cafe, ...$cafe_store)[
@@ -3770,7 +3742,39 @@ mua！</tw-passagedata><tw-passagedata pid="82" name="肉干" tags="" position="
 	  (print:&quot; &quot;)
 	  ]
 	]
-	}</tw-passagedata></tw-storydata>
+	}</tw-passagedata><tw-passagedata pid="85" name="更新文本" tags="" position="584,88" size="100,100">2022.5
+* 优化了背包显示
+* 增加了某些NPC的好感度行为、对话（对话有很多句随机显示），微调了其武功设定
+* 更新了地图
+---
+2022.4
+* 丰富了wls和睦未暑期出游的设定（快点练拳）
+* 每年11月的武术比赛（未完成，不做这个了！）
+* 丰富了养生派建筑、物品和门派任务（未完成）
+* 增加了八卦小报内容
+* 增加手机适配（无法自动识别，需要手动调整），优化了一些html样式
+* 完成了主线（多结局）
+* 会变饿了！
+* 增加了天气
+* Trigger warning:存在掉san内容，设置处可选择关闭！ 
+---
+2021.10
+相对于上一个版本的主要更新：
+* 完善npc（未完成）
+* 一点点任务
+---
+* 增加&amp;优化了剑说
+* 解决了侧边栏的个人信息（主要是时间）无法即时同步的问题
+* 优化了一些显示
+* 增加了创建角色时的描述
+* 增加（不完全）键盘快捷键：数字为侧边栏快捷键，字母为主页面快捷键，空格为对话快捷键（多个回答选项时有bug，但是现在只有一个多个回答选项嘻嘻）
+* 优化了（不完全）NPC和地区数值
+* 略
+待解决：
+* 战斗（大概率没有）
+* 数值作用
+* 一点点剧情
+* 一点点任务</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">"use strict";var _slicedToArray=function(){return function(e,t){if(Array.isArray(e))return e;if(Symbol.iterator in Object(e))return function(e,t){var n=[],r=!0,a=!1,i=void 0;try{for(var o,s=e[Symbol.iterator]();!(r=(o=s.next()).done)&&(n.push(o.value),!t||n.length!==t);r=!0);}catch(e){a=!0,i=e}finally{try{!r&&s.return&&s.return()}finally{if(a)throw i}}return n}(e,t);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}!function(){
 /**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
