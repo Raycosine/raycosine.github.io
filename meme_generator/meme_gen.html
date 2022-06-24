@@ -57,7 +57,7 @@
                             canvas_test_img.width = test_img.width;
                             canvas_test_img.height = test_img.height;
                         }
-                        ctx_test.drawImage(test_img,0,0);
+                        ctx_test.drawImage(test_img,0,0, test_img.width, test_img.height, 0,0,canvas_test_img.width, canvas_test_img.height);
 
                     }
                     test_img.src = event.target.result;
