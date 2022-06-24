@@ -1,0 +1,22 @@
+text area
+14.836
+46.164
+h=w=6
+total =63.5 (240px)
+first =52.18
+difference: 2.264
+a1 52.18
+a2 54.444
+a3 56.708
+a4 58.972
+a5 61.236
+a6 63.5
+a7, a8, a9, a10, a11, a12: move
+paper first y:
+44.934
+move two press:
+45.992
+every time: move 1.058
+
+disapper y:
+52.55

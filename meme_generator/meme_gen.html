@@ -1,0 +1,203 @@
+<head>
+    
+    <script src="gif.worker.js?v=3"></script>
+    <script src="gif.js?v=3"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <style>
+        @font-face{
+            font-family: 'px3';
+            src: url('../DottedSongtiSquareRegular.otf') format('truetype');
+        }
+        body{
+            font-family: px3;
+        }
+        .imageLoader{
+           display:none;
+        }
+        label, button{
+            font-family: px3;
+            background-color: whitesmoke;
+            display: inline-block;
+            border-width: 1px;
+            border-style: outset;
+            border-color: black;
+            border-image: initial;
+            cursor: pointer;
+            padding: 1px 6px;
+            margin: 0em;
+            text-align: center;
+            align-items: flex-start;
+        }
+    </style>
+    <script>
+        var tooop=[212.05366040628593, 203.23561824994488, 195.12167595401002, 187.63074001220917, 180.69370958259847, 174.25133858267716, 178.25007874015748, 182.2488188976378, 186.2475590551181, 190.24629921259842, 192.24566929133857],
+        left=[68.23763894212341, 65.4000440819925, 62.78902447626437, 60.37848470460557, 58.14618851655889, 56.07307086614173, 56.07307086614173, 56.07307086614173, 56.07307086614173, 56.07307086614173, 56.07307086614173],
+        ctooop=[-60, -60, -60, -60, -60, -60, -60, -60, -60, -60, -60],
+        cleft=[-60, -60, -60, -60, -60, -60, -60, -60, -60, -60, -60],
+        cwidth=[120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120],
+        cheight=[120, 120, 120, 120, 120, 120, 100.34645669291339, 80.69291338582677, 61.03937007874015, 41.38582677165354, 29.729763779527563],
+        scc=[28.05672671521656, 26.890015428697374, 25.816463285603444, 24.825340839720546, 23.90750538898687, 23.055118110236222, 23.055118110236222, 23.055118110236222, 23.055118110236222, 23.055118110236222, 23.055118110236222];
+        var frame_interval = [107, 7,7,7,7,7,
+        7,7,7,7,7,107];
+        var ctx_list=[];
+        var img_list=[];
+        var test_img = new Image();
+
+        function init(){
+            function handleImage(e){
+                var reader = new FileReader();
+                
+                reader.onload = function(event){
+                    test_img.onload = function(){
+                        if(test_img.width>200){
+                            canvas_test_img.width = 200;
+                            canvas_test_img.height = test_img.height/test_img.width*200;
+                        }
+                        else{
+                            canvas_test_img.width = test_img.width;
+                            canvas_test_img.height = test_img.height;
+                        }
+                        ctx_test.drawImage(test_img,0,0);
+
+                    }
+                    test_img.src = event.target.result;
+                    console.log('reader onload');
+                    console.log(test_img.src);
+                }
+                reader.readAsDataURL(e.target.files[0]);     
+            }
+            for(i=1;i<=12;i++){
+                var canvas_id = 'canvas'+i.toString();
+                var canvas=document.getElementById(canvas_id);
+                canvas.width=240;
+                canvas.height=240;
+                canvas.style.backgroundColor = "transparent";
+               ctx_list.push(document.getElementById(canvas_id).getContext('2d', {
+                alpha:true
+               }));
+            }
+
+            
+            var imageLoader = document.getElementById('imageLoader');
+            console.log('image loader');
+            var canvas_test_img = document.getElementById('testimg');
+            var ctx_test=canvas_test_img.getContext('2d');
+            imageLoader.addEventListener('change', handleImage, false);
+        }
+
+
+
+
+        
+        function draw_bg(cont){
+            console.log(cont);
+            var canvas_id=parseInt(img_list[cont-1].src.split('.').reverse()[1].split('/').reverse()[0].substr(1,5));
+            console.log(canvas_id);
+            console.log(parseInt(img_list[cont-1].src.split('.').reverse()[1].split('/').reverse()[0].substr(1,5)));
+            console.log(ctx_list[canvas_id-1]);
+            ctx_list[canvas_id-1].drawImage(img_list[canvas_id-1],
+                0, 0,   // Start at 70/20 pixels from the left and the top of the image (crop),
+                240, 240,   // "Get" a `50 * 50` (w * h) area from the source image (crop),
+                0, 0,     // Place the result at 0, 0 in the canvas,
+                240, 240); // With as width / height: 100 * 100 (scale)
+                
+        }
+        function draw1(){
+            for(cnt=1;cnt<=12;cnt++){
+                var img1=new Image();
+                img1.src='a'+cnt.toString()+'.png';
+                img_list.push(img1);
+            }
+            setTimeout(draw2, 1500); 
+        }
+        function draw2(){
+            for(cnt=1;cnt<=12;cnt++){
+                ctx_list[cnt-1].fillStyle='rgb(173,0,0)';
+                ctx_list[cnt-1].fillRect(0,0,240,240);
+            }
+            for(cnt=1;cnt<=12;cnt++){
+                draw_bg(cnt);
+            }
+            var img2=new Image();
+            console.log(test_img.src);
+            img2.src=test_img.src;
+            img2.addEventListener('load', ()=>{
+                for(cnt=1;cnt<=12;cnt++){
+                    var canvas_id='canvas'+cnt.toString();
+                    var canvas=document.getElementById(canvas_id);
+                    var ctx=canvas.getContext('2d');
+                    ctx.fillStyle='rgb(255,255,255)';
+                    ctx.fillRect(left[cnt-1], tooop[cnt-1], scc[cnt-1], scc[cnt-1]);
+                    ctx.drawImage(img2,
+                        0,0,
+                        img2.width, img2.height,
+                        left[cnt-1], tooop[cnt-1],
+                        scc[cnt-1], scc[cnt-1],// 22.67716
+                    );
+                }
+            })
+            setTimeout(draw3, 1000); 
+        }
+        function draw3(){
+            for(cnt=6;cnt<=12;cnt++){
+                var canvas_id='canvas'+cnt.toString();
+                var canvas=document.getElementById(canvas_id);
+                var ctx=canvas.getContext('2d');
+                ctx.drawImage(img_list[cnt-1],
+                    0, 198.4251968503937,
+                    240, 240-198.4251968503937,
+                    0,198.4251968503937, 
+                    240, 240-198.4251968503937
+                        )
+            }
+        }
+        function makegif(){
+            
+            var gif = new GIF({
+                workers: 2,
+                workerScript: 'gif.worker.js',
+                quality: 1,
+                width: 240,
+                height: 240,
+                transparent: '0xad0000',
+                debug: true
+            });
+            for(cnt=1;cnt<=12;cnt++){
+                var canvas_id='canvas'+cnt.toString();
+                gif.addFrame(ctx_list[cnt-1], {copy:true, delay: 10*frame_interval[cnt-1]});
+            }
+            gif.on('finished', function(blob) {
+                window.open(URL.createObjectURL(blob));
+            });
+            gif.render();
+        }
+    </script>
+</head>
+<body>
+    <div style="display:flex;flex-direction: column;align-items: center;">
+        <img src="example.gif" width=240 height=240>
+        <div>  
+            <button onclick="$('#imageLoader').click()">1. 选择垃圾</button>
+            <input type="file" class="imageLoader" onclick="init()" id="imageLoader" name="imageLoader"/>
+            <button id="draw1" onclick="init();draw1()">2. 绘制</button>
+            <button id="gif" onclick="makegif()">3.生成Gif!</button>
+            <p>ref: ins@moonlab_studio的小狗表情</p>
+        </div>
+        <canvas id="testimg"></canvas>
+        <div>
+            <canvas id="canvas1"></canvas>
+            <canvas id="canvas2"></canvas>
+            <canvas id="canvas3"></canvas>
+            <canvas id="canvas4"></canvas>
+            <canvas id="canvas5"></canvas>
+            <canvas id="canvas6"></canvas>
+            <canvas id="canvas7"></canvas>
+            <canvas id="canvas8"></canvas>
+            <canvas id="canvas9"></canvas>
+            <canvas id="canvas10"></canvas>
+            <canvas id="canvas11"></canvas>
+            <canvas id="canvas12"></canvas>
+        </div>
+        
+    </div>
+</body>
