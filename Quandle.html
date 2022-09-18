@@ -120,6 +120,13 @@
             cursor: crosshair;
             background-color: #01012b;
         }
+        body::-webkit-scrollbar {
+            display: none;
+        }
+        body {
+            -ms-overflow-style: none; 
+            scrollbar-width: none;  
+        }
         button:hover{
             margin: 12px;
             border:none;
@@ -292,8 +299,46 @@
             border-color: #e5e7eb;
             text-transform: lowercase;
         }
+        a{
+            color: #d1f7ff;
+
+        }
     </style>
     <script>
+        
+        var sound_volume=1;
+        function typewriter_bell(){
+            var bell = new Audio("typewriter_bell.mp3");
+            bell.volume=sound_volume;
+            bell.play();
+        }
+        function typewriter(){
+            var tw = new Audio("typewriter.mp3");
+            tw.volume=sound_volume;
+            tw.play();
+        }
+        function playbgm(){
+            var bgm=document.getElementById('bgm');
+            if(bgm.paused==true){
+                bgm.play();
+                bgm.muted=false;
+            }
+
+        }
+        function set_volume(vol){
+            var bgm=document.getElementById('bgm');
+            bgm.volume=vol/10;
+        }
+        function set_sound_volume(vol){
+            sound_volume=vol;
+        }
+        document.addEventListener('click', function(event) {
+            playbgm();
+        });
+        document.addEventListener('keydown', function(event) {
+            typewriter();
+            playbgm();
+        });
         function getRandomInt(max) {
             return Math.floor(Math.random() * max);
         }
@@ -504,8 +549,8 @@
             if(row==undefined){
                 return;
             }
-            console.log(row);
-            console.log(word_length.toString());
+            //console.log(row);
+            //console.log(word_length.toString());
             row.style="grid-template-columns:repeat("+word_length.toString()+",1fr)";
             row.innerHTML="";
             for(i=0;i<word_length;i++)
@@ -520,7 +565,7 @@
             guess1.placeholder=wordlist[getRandomInt(wordlist.length)];
             guess2.placeholder=wordlist[getRandomInt(wordlist.length)];
             let description=document.getElementById('des').children[1];
-            console.log(description);
+            //console.log(description);
             description.innerText="There are many copies of a quantum word state |w>=(|w_1>+...+|w_"+word_cnt.toString()+">)/sqrt("+word_cnt.toString()+"). Each word has "+word_length.toString()+" letters. You can pick any single word to measure this state. Can you find the classical description of w?";
             var rec=document.getElementById("history");
             rec.innerText="";
@@ -544,7 +589,7 @@
             anywhere.innerText="";
 
             var cheerarea=document.getElementById("reveal_area");
-                    cheerarea.innerHTML='<button id="reveal" onclick="reveal()">reveal</button>';
+                    cheerarea.innerHTML='<button id="reveal" onclick="typewriter();reveal()">reveal</button>';
         }
 
         function myFunction1(e) {
@@ -583,7 +628,7 @@
                         var cell=document.getElementById(i.toString());
                         var tmp=cell.innerText;
                         if(tmp.includes(word[i])==false){
-                            console.log(i);
+                            //console.log(i);
                             tmp+=word[i];
                             tmp=sortString(tmp);
                             cell.innerText=tmp;
@@ -698,7 +743,7 @@
             word_cnt=wcnt.value;
             
             var guess_area=document.getElementById('guess_area');
-            guess_area.innerHTML='<label>Make a guess:</label><input id="guess2" maxlength=5 minlength=5 placeholder="weary" style="margin:auto;"><button onclick="myFunction2(0)">submit</button>';
+            guess_area.innerHTML='<label>Make a guess:</label><input id="guess2" maxlength=5 minlength=5 placeholder="weary" style="margin:auto;"><button onclick="typewriter_bell();myFunction2(0)">submit</button>';
             var res_image=document.getElementById("res_image");
             res_image.outerHTML='<canvas id="res_image" width="1" height="1"></canvas>';
             refreshpage(daily);
@@ -719,12 +764,12 @@
                 temp_str+=" PRACTICE";
             }
             cont_str=cont_str+'\n'+temp_str+'\n'+'https://raycosine.github.io/Quandle.html'+'\n';
-            console.log(cont_str);
+            //console.log(cont_str);
             var cheerarea=document.getElementById("reveal_area");
             if(cheerarea.innerText!='reveal'){
                 cont_str=cont_str+'You find the words in '+(res_history.split('\n').length-1).toString()+' attempts!\n';
-            console.log(cont_str);
-            console.log(res_history);
+            //console.log(cont_str);
+            //console.log(res_history);
             }
             
             copy_cont.innerText=cont_str;
@@ -786,8 +831,8 @@
             for(i=0;i<img_str.length;i++){
                 ctx.fillStyle='#05d9e8';
                 var digit=img_str[i]-'0';
-                console.log(digit);
-                console.log(digit_str[digit]);
+                //console.log(digit);
+                //console.log(digit_str[digit]);
                 for(j=0;j<5;j++){
                     for(k=0;k<3;k++){
                         if(digit_str[digit][j][k]==1){
@@ -828,7 +873,7 @@
         
         <div id="sidebar" style="margin:auto;flex-direction: row;display: flex;margin:auto;justify-content: space-between;align-items: flex-start;"> 
             <div style="display:flex;flex-direction:row;margin:auto;justify-content: left; align-items: flex-start;">
-                <button onclick="document.getElementsByClassName('prac_op')[0].style.display='flex';reset(false);" >Practice</button>
+                <button onclick="typewriter();document.getElementsByClassName('prac_op')[0].style.display='flex';reset(false);" >Practice</button>
                 <div id="sidebar" class="prac_op" style="margin:auto;flex-direction: column;display: none;margin:auto;justify-content: space-between;align-items: flex-start;">
                     <div style="align-content:space-between;margin-right: 25px;">
                         <label>Word length</label>
@@ -842,18 +887,26 @@
                     </div>
                 </div>
             </div>
-            <button onclick="reset(true);document.getElementsByClassName('prac_op')[0].style.display='none';" >Daily (two 5 letter words)</button>
+            <button onclick="typewriter();reset(true);document.getElementsByClassName('prac_op')[0].style.display='none';" >Daily (two 5 letter words)</button>
         </div>
 
         <div id="sidebar" style="margin:auto;flex-direction: column;display: flex;margin:auto;justify-content: space-between;align-items: flex-start;"> 
-            <button onclick="document.getElementById('des').style.display='none';">Start</button>
+            <button onclick="typewriter_bell();document.getElementById('des').style.display='none';">Start</button>
         </div>
         <div>
         <p style="top:0;left:0;right:0;padding:0 2% 0 2%;">🟩 means you get 1 in this spot, so the letter is definitely in the correct spot for at least one of the words.</p>
         <p style="top:0;left:0;right:0;padding:0 2% 0 2%;">🟨 means you get 0 in this spot. But to make it similar to the classical version, you are told that the letter must be in other spots, but it can happen if the letter is also in this spot!</p>
             <p style="top:0;left:0;right:0;padding:0 2% 0 2%;">⬜ means you get 0 in this spot and nothing informative. Just one more try!</p>
+            <p style="top:0;left:0;right:0;padding:0 2% 0 2%;">
+                BGM <input id="volume" style="width:50px" type="range" min="0" max="10" value="10" oninput="this.nextElementSibling.value = this.value;set_volume(this.value);"><output>10</output>
+                Sound Effects <input id="sound_volume" style="width:50px" type="range" min="0" max="10" value="10" oninput="this.nextElementSibling.value = this.value;set_sound_volume(this.value/10);"><output>10</output>
+            </p>         
             <p style="top:0;left:0;right:0;padding:0 2% 0 2%;"> Word list: SOWPODS</p>
-            <button onclick="document.getElementById('des').style.display='none';">CLOSE</button>
+            <p style="top:0;left:0;right:0;padding:0 2% 0 2%;"> Background music: <a href="https://soundcloud.com/rc-977255780/do-quantum-games-dream-of-classical-players?si=2feffe2a98fc4a7995e795aaae6181dc&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing">Do quantum games dream of classical players? </a> (written by myself)
+            </p>
+            <p style="top:0;left:0;right:0;padding:0 2% 0 2%;"> Sound effects are from <a href="aigei.com">here</a>, all under CC0 license. </p>
+            <p style="top:0;left:0;right:0;padding:0 2% 0 2%;"> Fonts are: <a href="https://www.pentacom.jp/pentacom/bitfontmaker2/gallery/?id=381">HelvetiPixel by pentacom</a> (public domain) & <a href="https://www.pentacom.jp/pentacom/bitfontmaker2/gallery/?id=238">Extrude by Nic</a> (public domain)</p>
+            <button onclick="typewriter();document.getElementById('des').style.display='none';">CLOSE</button>
         </div>
     </div>
 
@@ -863,9 +916,9 @@
             
             <label>Enter a word:</label>
             <input id="guess1" autofocus=1 maxlength=5 minlength=5 placeholder="weary" style="margin:auto;">
-            <button  onclick="myFunction1(0)">submit</button>
+            <button  onclick="typewriter_bell();myFunction1(0)">submit</button>
         
-            <button id="info" onclick="document.getElementById('des').style.display='flex';">⚙️&❓</button>
+            <button id="info" onclick="typewriter();document.getElementById('des').style.display='flex';">⚙️&❓</button>
         </div>
     </div>
     <div class="board">
@@ -888,17 +941,17 @@
         <div id="guess_area" onKeyPress="return myFunction2(event)">
             <label>Make a guess:</label>
             <input id="guess2" maxlength=5 minlength=5 placeholder="weary" style="margin:auto;">
-            <button onclick="myFunction2(0)">submit</button>
+            <button onclick="typewriter_bell();myFunction2(0)">submit</button>
         </div>
         <div id="result">
             Current progress:|?????>+|?????>
         </div>
         <div id="history" style="height: 100px;max-height:100px;margin: 0em;overflow-y: auto;"></div>
         <div id="reveal_area">
-            <button id="reveal" onclick="reveal()">reveal</button>
+            <button id="reveal" onclick="typewriter();reveal()">reveal</button>
         </div>
         <div id="copy_area">
-            <button id="copy" onclick="copy()">share (text/image)</button>
+            <button id="copy" onclick="typewriter();copy()">share (text/image)</button>
         </div>
     </div>
     <div id="res_img_tot">
@@ -913,5 +966,9 @@
     </div>
 
     </div>
+    <iframe src="typewrite bell1.mp3" allow="autoplay" id="audio" style="display: none"></iframe>
     
+    <audio loop autoplay preload muted id="bgm">
+        <source src="QuantumGames.mp3" type="audio/mp3">
+    </audio>
 </body>
